@@ -1,0 +1,29 @@
+.AuthPage{
+    height: 100vh;
+}
+
+
+.form-container{
+    width: 100%;
+    height: 60vh;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex{
+    padding-top: 10vh;
+    display: flex;
+    justify-content: center;
+    height: 50vh;
+}
+
+.authButton{
+    background-color: red;
+}
+
+.highest-cont{
+    width: 30vw;
+}

@@ -30,13 +30,11 @@ export default function LoginForm({ setUser }) {
   }
 
   return (
-    <div>
+    <div className='highest-cont'>
       <div className="form-container" onSubmit={handleSubmit}>
-        <form autoComplete="off" >
-          <label>Username</label>
-          <input type="text" name="username" value={credentials.username} onChange={handleChange} required />
-          <label>Password</label>
-          <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
+        <form className="form" autoComplete="off" >
+          <input type="text" name="username" placeholder='Username' value={credentials.username} onChange={handleChange} required />
+          <input type="password" name="password" placeholder="Password" value={credentials.password} onChange={handleChange} required />
           <button type="submit">LOG IN</button>
         </form>
       </div>

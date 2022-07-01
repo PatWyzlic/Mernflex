@@ -91,10 +91,11 @@ p.error-message {
 }
 
 form {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
+  display: flex;
+  flex-direction: column;
   gap: 1.25vmin;
   color: var(--text-light);
+  padding-top: 30%;
 }
 
 label {
