@@ -12,7 +12,7 @@ export default class SignUpForm extends Component {
     // The object passed to setState is merged with the current state object
     handleChange = (evt) => {
         this.setState({
-            [evt.target.username]: evt.target.value,
+            [evt.target.name]: evt.target.value,
             error: ''
         });
     };
@@ -43,7 +43,7 @@ export default class SignUpForm extends Component {
                 <div className="form-container">
                     <form autoComplete="off" onSubmit={this.handleSubmit}>
                         <label>Username</label>
-                        <input type="text" name="name"  value={this.state.user} onChange={this.handleChange} required />
+                        <input type="text" name="username"  value={this.state.user} onChange={this.handleChange} required />
                         <label>Password</label>
                         <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
                         <label>Confirm</label>
