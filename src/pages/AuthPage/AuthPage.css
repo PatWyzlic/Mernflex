@@ -1,16 +1,34 @@
 .AuthPage{
     height: 100vh;
+    text-align: center;
+    background-image: url('../../../public/Assets/images/netflix-image.jpeg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.authButton{
+    position: absolute;
+    top: 10%;
+    right: 10%
 }
 
 
 .form-container{
     width: 100%;
-    height: 60vh;
+    height: 50vh;
+    border: 1px grey solid;
+    background-color: rgba(0,0,0,.5);
+    color: white
 }
+
 
 .form{
     display: flex;
     flex-direction: column;
+}
+
+.login-form{
+    padding-top: 30%;
 }
 
 .flex{
@@ -20,8 +38,8 @@
     height: 50vh;
 }
 
-.authButton{
-    background-color: red;
+button{
+    background-color: var(--Netflix-Red);
 }
 
 .highest-cont{

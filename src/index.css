@@ -92,7 +92,6 @@ form {
   flex-direction: column;
   gap: 1.25vmin;
   color: var(--text-light);
-  padding-top: 30%;
 }
 
 label {
