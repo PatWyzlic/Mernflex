@@ -1,14 +1,24 @@
 import "./IndexPage.css"
 import { useState } from "react"
+import genres from '../../components/genres.js'
+import FeaturedMovie from "../../components/FeaturedMovie/FeaturedMovie";
+import MoviesCont from "../../components/MoviesCont/MoviesCont";
+import MoviesGenreRows from "../../components/MoviesGenreRows/MoviesGenreRows";
 
 
 
 export default function IndexPage(){
+
+    const [movies, SetMovies] = useState([]);
+
+    const API_KEY = "d360e29d9c56bc4d6949ac6197400528";
+
+
     return(
       <div className="Index">
       <h1>MERNFLEX</h1>
       <FeaturedMovie API_KEY={API_KEY} />
-      <MoviesContUE API_KEY={API_KEY} movies={movies} SetMovies={SetMovies} />
+      <MoviesCont API_KEY={API_KEY} movies={movies} SetMovies={SetMovies} />
       <MoviesGenreRows
         API_KEY={API_KEY}
         movies={movies}
