@@ -41,6 +41,8 @@ export default class SignUpForm extends Component {
         return (
             <div className='highest-cont'>
                 <div className="form-container">
+                    <h2>Unlimited Movies, Tv Shows and More</h2>
+                    <h4>Watch Anywhere, Cancel Anytime</h4>
                     <form autoComplete="off" onSubmit={this.handleSubmit}>
                         <input type="text" name="username" placeholder='Username' value={this.state.user} onChange={this.handleChange} required />
                         <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} required />
