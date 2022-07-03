@@ -1,6 +1,7 @@
 .movie {
     height: 200px;
     padding-top: 10px;
+    margin-left: .3vw;
   }
   
   .movie img {
@@ -21,7 +22,9 @@
   }
   .row-Title {
     margin: 0;
+    margin-left: .3vw;
     color: white;
+
   }
   
   .backdrop {
