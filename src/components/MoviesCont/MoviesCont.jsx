@@ -12,7 +12,7 @@ export default function MoviesCont({API_KEY, SetMovies, movies}){
       .then((response) => response.json())
       .then((data) => {
         SetMovies(data.results);
-        //console.log(data.results);
+        console.log(data.results);
       });
     }
 
