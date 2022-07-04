@@ -5,6 +5,7 @@ import IndexPage from '../IndexPage/IndexPage';
 import { Routes, Route } from 'react-router-dom'
 import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-service';
+import WatchListPage from '../WatchListPage/WatchListPage';
 
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
             <Route path="/" element={<IndexPage/>} />
             {/* <Route path="/orders/new" element={<NewOrderPage />} />
             <Route path="/orders" element={<OrderHistoryPage />} /> */}
+            <Route path="/watchlistpage" element={<WatchListPage/>} />
           </Routes>
       </>
       :

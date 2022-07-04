@@ -2,6 +2,7 @@
     height: 200px;
     padding-top: 10px;
     margin-left: .3vw;
+    cursor: pointer;
   }
   
   .movie img {
