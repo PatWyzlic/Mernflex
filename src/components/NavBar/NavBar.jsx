@@ -23,7 +23,7 @@ export default function NavBar({ user, setUser }) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Tv-Shows</a>
@@ -32,7 +32,7 @@ export default function NavBar({ user, setUser }) {
                         <a class="nav-link" href="#">Movies</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">My Watchlist</a>
+                        <a class="nav-link" href="/watchlistpage">My Watchlist</a>
                     </li>
                 </ul>
                     <form class="form-inline nav-form my-2 my-lg-0 mr-auto">
