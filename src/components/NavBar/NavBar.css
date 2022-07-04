@@ -6,4 +6,41 @@ nav a{
 nav {
     color: white;
     display: flex;
+    background-color: black;
+}
+
+.nav-form{
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-brand{
+    color: var(--Netflix-Red);
+}
+
+.nav-link{
+    color: white;
+}
+
+.nav-link:hover {
+    color: var(--Netflix-Red);
+}
+
+.navbar-toggle{
+    background-color: var(--Netflix-Red);
+    color: var(--Netflix-Red)
+}
+
+.btn-outline-success{
+    border-color: var(--Netflix-Red);
+    color: white;
+}
+.btn-outline-success:hover{
+    background-color: var(--Netflix-Red);
+    border-color: var(--Netflix-Red);
+    color: white    ;
+}
+
+.navbar-brand:hover{
+    color: var(--Netflix-Red);
 }
