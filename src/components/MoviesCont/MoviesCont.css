@@ -12,7 +12,7 @@
     height: 53vw;
   }
   
-  .row {
+  .movie-row {
     max-height: 220px;
     display: flex;
     width: 100vw;

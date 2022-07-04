@@ -16,7 +16,6 @@ export default function MoviesGenreRows({ API_KEY, genreId, genreName }){
       });
   }
 
-  console.log("render");
   useEffect(() => {
     getMovies(mainUrl);
   }, []);
@@ -24,7 +23,7 @@ export default function MoviesGenreRows({ API_KEY, genreId, genreName }){
     return(
         <>
       <h4 className="row-Title">{genreName}</h4>
-      <div className="row">
+      <div className="movie-row">
         {movies.map((movie) => {
           return (
             <div className="movie">

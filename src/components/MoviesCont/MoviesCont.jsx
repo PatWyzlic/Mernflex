@@ -12,7 +12,7 @@ export default function MoviesCont({API_KEY, SetMovies, movies}){
       .then((response) => response.json())
       .then((data) => {
         SetMovies(data.results);
-        //console.log(data.results);
+        console.log(data.results);
       });
     }
 
@@ -23,7 +23,7 @@ export default function MoviesCont({API_KEY, SetMovies, movies}){
     return(
         <>
         <h4 className="row-Title">Featured Films</h4>
-        <div className="row">
+        <div className="movie-row">
           {movies.map((movie) => {
             return <div className="movie">
             <img
