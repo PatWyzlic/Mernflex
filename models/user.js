@@ -14,7 +14,10 @@ const userSchema = new Schema({
         trim: true,
         minLength: 3,
         required: true
-    }
+    },
+    Profiles: [
+        {type: Schema.Types.ObjectId, ref: 'Profile'}
+    ]
 }, {
     timestamps: true,
     // Even though it's hashed - don't serialize the password
