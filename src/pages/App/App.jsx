@@ -10,6 +10,8 @@ import WatchListPage from '../WatchListPage/WatchListPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser())
+  const [listName, setListName] = useState("")
+
   return (
     <main className="App">
       {user ?
@@ -19,7 +21,7 @@ export default function App() {
             <Route path="/" element={<IndexPage/>} />
             {/* <Route path="/orders/new" element={<NewOrderPage />} />
             <Route path="/orders" element={<OrderHistoryPage />} /> */}
-            <Route path="/watchlistpage" element={<WatchListPage/>} />
+            <Route path="/watchlistpage" element={<WatchListPage listName={setListName}/>} />
           </Routes>
       </>
       :

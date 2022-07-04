@@ -1,7 +1,7 @@
 import "../WatchListPage/WatchListPage.css"
 import React, { useState } from "react"
 
-export default function WatchListPage() {
+export default function WatchListPage({listName}) {
     const [visible, setVisible] = useState(false)
 
     return (
