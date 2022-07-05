@@ -4,7 +4,7 @@ import {useEffect, useState} from "react"
 
 export default function FeaturedTVShow({API_KEY}){
 
-    const [featuredFilm, setFeaturedTVShow] = useState([])
+    const [featuredTVShow, setFeaturedTVShow] = useState([])
     const [featuredUrl, SetFeaturedUrl] = useState([])
   
     function getFeaturedFilm(url){
@@ -12,7 +12,7 @@ export default function FeaturedTVShow({API_KEY}){
       .then((response) => response.json())
       .then((data) => {
         console.log(data.results[0])
-        setFeaturedFilm(data.results[0])
+        setFeaturedTVShow(data.results[0])
     })
   }
     const URL_Featured = `https://api.themoviedb.org/3/tv/search/tv?api_key=${API_KEY}&language=en-US&page=1&query=stranger%20things&include_adult=false`
@@ -28,7 +28,7 @@ export default function FeaturedTVShow({API_KEY}){
       }
   
     useEffect(() => {
-      getFeaturedFilmVideo(URL_Featured_Video)
+      getFeaturedTVShowVideo(URL_Featured_Video)
       getFeaturedFilm(URL_Featured)
     }, []);
   
@@ -45,9 +45,9 @@ export default function FeaturedTVShow({API_KEY}){
                 frameborder="0"
                 allowfullscreen
                 ></iframe>
-        <div className="feraturedinfo">
-            <h2>{featuredFilm.title}</h2>
-            <p>{featuredFilm.overview}</p>
+        <div className="featuredinfo">
+            <h2>{featuredTVShow.title}</h2>
+            <p>{featuredTVShow.overview}</p>
         </div>
         </div>
     )
