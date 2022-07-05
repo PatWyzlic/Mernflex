@@ -3,32 +3,32 @@ import "./TVShowsCont.css"
 
 
 
-export default function MoviesCont({API_KEY, SetMovies, movies}){
+export default function MoviesCont({API_KEY, SetTVShows, tvShows}){
 
-  const mainUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=Action&with_watch_monetization_types=flatrate`;
+  const mainUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=Action&with_watch_monetization_types=flatrate`;
 
-  function getMovies(url) {
+  function getTVShows(url) {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        SetMovies(data.results);
+        SetTVShows(data.results);
         console.log(data.results);
       });
     }
 
   useEffect(() => {
-    getMovies(mainUrl)
+    getTVShows(mainUrl)
   }, []);
 
     return(
         <>
         <h4 className="row-Title">Featured Films</h4>
-        <div className="movie-row">
-          {movies.map((movie) => {
-            return <div className="movie">
+        <div className="tv-show-row">
+          {tvShows.map((tvShow) => {
+            return <div className="tv-show">
             <img
-              className="movie"
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              className="tv-show"
+              src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
               alt=""
             />
           </div>
