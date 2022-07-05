@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import "./ProfilePage.css"
 
 export default function ProfilePage() {
 
