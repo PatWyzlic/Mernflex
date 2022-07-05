@@ -19,6 +19,7 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path="/" element={<ProfilePage/>} />
+            <Route path="/home" element={<IndexPage/>} />
             {/* <Route path="/orders/new" element={<NewOrderPage />} />
             <Route path="/orders" element={<OrderHistoryPage />} /> */}
             <Route path="/watchlistpage" element={<WatchListPage listName={setListName}/>} />

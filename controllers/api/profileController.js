@@ -20,15 +20,19 @@ function createProfile(req, res){
     CheckToken.checkToken(req,res)
     try{
         user = req.user._id
+        console.log("Req: ", req.body)
+        Profile.create(req.body)
+        .then((data) => {
+            console.log("The data:", data)
+            console.log("user id", user)
+            User.updateOne({_id: user}, {$push: {Profiles: data}})
+        .then((x) =>{
+            console.log(x)
+        })
+    })
     }catch{
         console.log(error)
     }
-    console.log("Req: ", req.body)
-    Profile.create(req.body)
-    .then((data) => {
-        console.log("The data:", data)
-        User.findOneAndUpdate({_id: user}, {$push: {Profiles: {data}}})
-    })
 }
 
 
