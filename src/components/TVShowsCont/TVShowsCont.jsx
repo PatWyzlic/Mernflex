@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react"
 import "./TVShowsCont.css"
 
-
-
-export default function MoviesCont({API_KEY, SetTVShows, tvShows}){
+export default function TVShowsCont({API_KEY, SetTVShows, tvShows}){
 
   const mainUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=Action&with_watch_monetization_types=flatrate`;
 
@@ -22,7 +20,7 @@ export default function MoviesCont({API_KEY, SetTVShows, tvShows}){
 
     return(
         <>
-        <h4 className="row-Title">Featured Films</h4>
+        <h4 className="row-Title">Featured TV Shows</h4>
         <div className="tv-show-row">
           {tvShows.map((tvShow) => {
             return <div className="tv-show">
