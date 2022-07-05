@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import "./ProfilePage.css"
-import { createProfile } from "../../utilities/profiles-api";
+import * as ProfileAPI from "../../utilities/profiles-api";
 
 export default function ProfilePage() {
 
@@ -14,14 +14,14 @@ export default function ProfilePage() {
             <a className="text-standards hover" onClick={() => setVisible(!visible)}>{visible ? '-' : '+'}</a>
                 {visible && 
                     <div>
-                        <form className="form" onSubmit={createProfile}>
+                        <form className="form" onSubmit={ProfileAPI.createProfile}>
                             <input type="text"
                             placeholder="Create Profile"name ="ProfileName"></input>
                             {/* <input type="checkbox" value="autoPlay"></input> */}
                             <input type="submit" className="hover"></input>
                         </form>
                     </div> }
-
+ß
 
             <button>Manage Profiles</button>
             
