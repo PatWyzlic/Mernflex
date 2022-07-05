@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const {Schema,model} = mongoose
 
 //Watchlist Schema
 const WatchListSchema = new Schema({

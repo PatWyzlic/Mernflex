@@ -6,7 +6,7 @@ import { Routes, Route } from 'react-router-dom'
 import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-service';
 import WatchListPage from '../WatchListPage/WatchListPage';
-
+import ProfilePage from '../ProfilePage/ProfilePage'; 
 
 export default function App() {
   const [user, setUser] = useState(getUser())
@@ -18,7 +18,7 @@ export default function App() {
       <>
           <NavBar user={user} setUser={setUser} />
           <Routes>
-            <Route path="/" element={<IndexPage/>} />
+            <Route path="/" element={<ProfilePage/>} />
             {/* <Route path="/orders/new" element={<NewOrderPage />} />
             <Route path="/orders" element={<OrderHistoryPage />} /> */}
             <Route path="/watchlistpage" element={<WatchListPage listName={setListName}/>} />
