@@ -16,13 +16,13 @@ export default function FeaturedTVShow({API_KEY}){
     })
   }
     const URL_Featured = `https://api.themoviedb.org/3/tv/search/tv?api_key=${API_KEY}&language=en-US&page=1&query=stranger%20things&include_adult=false`
-    const URL_Featured_Video = `https://api.themoviedb.org/3/movie/157336/videos?api_key=${API_KEY}&language=en-US`
+    const URL_Featured_Video = `https://api.themoviedb.org/3/tv/66732/videos?api_key=${API_KEY}&language=en-US`
   
     function getFeaturedTVShowVideo(url) {
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
-          const videokey=data.results[6].key;
+          const videokey=data.results[4].key;
           SetFeaturedUrl(`https://www.youtube.com/embed/${videokey}?autoplay=1&loop=1&playlist=${videokey}&mute=1&rel=0`)
         });
       }
