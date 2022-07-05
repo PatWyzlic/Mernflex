@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 
 
-export default function MoviesGenreRows({ API_KEY, genreId, genreName }){
+export default function TVShowsGenreRows({ API_KEY, genreId, genreName }){
 
-  const [tvShows, SetTVShows] = useState([]);
+  const [tvShows, setTVShows] = useState([]);
 
-  const mainUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}&with_watch_monetization_types=flatrate`;
+  const mainUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}&with_watch_monetization_types=flatrate`;
 
   function getTVShows(url) {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        setMovies(data.results);
+        setTVShows(data.results);
         //console.log(data.results);
       });
   }
@@ -24,12 +24,12 @@ export default function MoviesGenreRows({ API_KEY, genreId, genreName }){
         <>
       <h4 className="row-Title">{genreName}</h4>
       <div className="movie-row">
-        {movies.map((tvShow) => {
+        {tvShows.map((tvShow) => {
           return (
-            <div className="tvShow">
+            <div className="tv-show">
               <img
-                className="tvShow"
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                className="tv-show"
+                src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
                 alt=""
               />
             </div>
