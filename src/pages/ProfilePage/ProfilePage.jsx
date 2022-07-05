@@ -15,7 +15,8 @@ export default function ProfilePage() {
                     <div>
                         <form className="form">
                             <input type="text"
-                            placeholder="Create Profile"></input>
+                            placeholder="Create Profile"name ="profileName"></input>
+                            <input type="checkbox" value="autoPlay"></input>
                             <input type="submit" className="hover"></input>
                         </form>
                     </div> }
