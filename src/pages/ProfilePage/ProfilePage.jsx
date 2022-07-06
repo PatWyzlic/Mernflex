@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
 import "./ProfilePage.css"
 import * as ProfileAPI from "../../utilities/profiles-api";
+import { Link } from 'react-router-dom'
+
 const propic1 = require("../../images/profile-icon1.png")
 const propic2 = require("../../images/profile-icon2.png")
 const propic3 = require("../../images/profile-icon3.png")

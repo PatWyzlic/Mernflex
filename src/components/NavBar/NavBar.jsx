@@ -24,16 +24,16 @@ export default function NavBar({ user, setUser, clickedProfile }) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/home">Home</a>
+                        <Link className="nav-link" to="/home">Home</Link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/tvshows">TV Shows</a>
+                        <Link className="nav-link" to="/tvshows">TV Shows</Link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/movies">Movies</a>
+                        <Link className="nav-link" to="/movies">Movies</Link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/watchlistpage">My Watchlist</a>
+                        <Link className="nav-link" to="/watchlistpage">My Watchlist</Link>
                     </li>
                 </ul>
                     <form class="form-inline nav-form my-2 my-lg-0 mr-auto">
