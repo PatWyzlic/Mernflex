@@ -75,11 +75,13 @@ export default function ProfilePage({profiles}) {
                     <div>
                         <form className="form" onSubmit={handleSubmit}>
                             <input type="text"
+
                             placeholder="Create Profile" 
                             name="ProfileName" 
                             value={profile.ProfileName}
                             onChange={handleChange}>
                             </input>
+
                             {/* <input type="checkbox" value="autoPlay"></input> */}
                             <input type="submit" className="hover"></input>
                         </form>
