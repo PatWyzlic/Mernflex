@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react"
 import "./ProfilePage.css"
 import * as ProfileAPI from "../../utilities/profiles-api";
+const propic1 = require("../../images/profile-icon1.png")
+const propic2 = require("../../images/profile-icon2.png")
+const propic3 = require("../../images/profile-icon3.png")
+const propic4 = require("../../images/profile-icon4.png")
+const propic5 = require("../../images/profile-icon5.png")
+const propic6 = require("../../images/profile-icon6.png")
 
 export default function ProfilePage({profiles}) {
     const [visible, setVisible] = useState(false)
@@ -9,6 +15,14 @@ export default function ProfilePage({profiles}) {
         ProfileName: ''
       });
       const [error, setError] = useState('');
+
+      const images = [propic1,propic2,propic3,propic4,propic5,propic6]
+      
+
+      let ran
+      function randomimg (){
+      ran = Math.floor(Math.random() * images.length)
+      }
     
       function handleChange(evt) {
         setProfile({ ...profile, [evt.target.name]: evt.target.value });
@@ -36,14 +50,19 @@ export default function ProfilePage({profiles}) {
         getTheProfiles()
       },[])
     
+
+
+
+
     return(
         <div class="profile-page">
             <h1>Who's Watching?</h1>
             <div className="profiles">
               {profiles.map((profile) => {
+                randomimg()
             return <div className="profile-cont">
                       {/* <div class="profile-icon"></div> */}
-                      <img className = "profile-icon" src={require("../../images/profile-icon1.png")} alt="" />
+                      <img className = "profile-icon" src={images[ran]} alt="" />
                       <h4>{profile.ProfileName}</h4>
                   </div>
           })}
