@@ -48,6 +48,9 @@ export default function MyVerticallyCenteredModal(props) {
               )
             })}
           </ul>
+          <p>
+            releaseDate: {props.clickedmovie.release_date}
+          </p>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={props.onHide}>Close</Button>
