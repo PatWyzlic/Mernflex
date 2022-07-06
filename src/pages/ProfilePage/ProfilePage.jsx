@@ -8,9 +8,9 @@ const propic4 = require("../../images/profile-icon4.png")
 const propic5 = require("../../images/profile-icon5.png")
 const propic6 = require("../../images/profile-icon6.png")
 
-export default function ProfilePage({profiles}) {
+export default function ProfilePage({profiles, clickedProfile, setClickedProfile}) {
     const [visible, setVisible] = useState(false)
-    // const [profilesTry, setProfilesTry] = useState([])
+    const [profilesTry, setProfilesTry] = useState([])
     const [profileList, setProfileList] = useState([])
     const [profile, setProfile] = useState({
         ProfileName: ''
@@ -41,21 +41,26 @@ export default function ProfilePage({profiles}) {
         }
       }
 
+      async function handleClick(evt){
+        await setClickedProfile(evt)
+        console.log("clicked Profile:", clickedProfile._id)
+      }
+
       // console.log(profiles)
 
       //// used for the original showprofiles  ////
     
-      // useEffect(function(){
-      //     async function getTheProfiles(){
-      //     const profiles = await ProfileAPI.getProfiles();
-      //     setProfilesTry(profiles) 
-      //   }
-      //   getTheProfiles()
-      // },[])
+      useEffect(function(){
+          async function getTheProfiles(){
+          const profiles = await ProfileAPI.getProfiles();
+          setProfilesTry(profiles) 
+        }
+        getTheProfiles()
+      },[])
 
-      // useEffect(() => {
-      //   setProfileList(profiles)
-      // }, [profiles]);
+      useEffect(() => {
+        setProfileList(profiles)
+      }, [profiles]);
     
     return(
         <div class="profile-page">
@@ -65,7 +70,7 @@ export default function ProfilePage({profiles}) {
                 randomimg()
             return <div className="profile-cont">
                       {/* <div class="profile-icon"></div> */}
-                      <img className = "profile-icon" src={images[ran]} alt="" />
+                      <img className = "profile-icon" src={images[ran]} alt="" onClick={() => handleClick(profile)}/>
                       <h4>{profile.ProfileName}</h4>
                   </div>
           })}

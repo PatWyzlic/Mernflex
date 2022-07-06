@@ -12,18 +12,18 @@ import HomePage from "../HomePage/HomePage"
 
 export default function App() {
   const [user, setUser] = useState(getUser())
+  const [clickedProfile, setClickedProfile] = useState()
   const [listName, setListName] = useState("")
 
   return (
     <main className="App">
       {user ?
       <>
-          <NavBar user={user} setUser={setUser} />
+          <NavBar user={user} setUser={setUser} clickedProfile={clickedProfile} />
           <Routes>
-            <Route path="/" element={<ProfilePage profiles={user.Profiles}/>}/>
+            <Route path="/" element={<ProfilePage profiles={user.Profiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             {/* <Route path="/" element={<ProfilePage/>} /> */}
       
-
             <Route path="/home" element={<HomePage/>} />
             <Route path="/movies" element={<IndexPage/>} />
             <Route path="/tvshows" element={<TVShowPage/>} />
