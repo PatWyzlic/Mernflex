@@ -8,6 +8,7 @@ import { getUser } from '../../utilities/users-service';
 import WatchListPage from '../WatchListPage/WatchListPage';
 import ProfilePage from '../ProfilePage/ProfilePage'; 
 import TVShowPage from '../TVShowPage/TVShowPage';
+import HomePage from "../HomePage/HomePage"
 
 export default function App() {
   const [user, setUser] = useState(getUser())
@@ -20,7 +21,8 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path="/" element={<ProfilePage profiles={user.Profiles}/>}/>
-            <Route path="/home" element={<IndexPage/>} />
+            <Route path="/home" element={<HomePage/>} />
+            <Route path="/movies" element={<IndexPage/>} />
             <Route path="/tvshows" element={<TVShowPage/>} />
             {/* <Route path="/orders/new" element={<NewOrderPage />} />
             <Route path="/orders" element={<OrderHistoryPage />} /> */}
