@@ -21,7 +21,7 @@ export default function ProfilePage() {
                             <input type="submit" className="hover"></input>
                         </form>
                     </div> }
-ß
+
 
             <button>Manage Profiles</button>
             
