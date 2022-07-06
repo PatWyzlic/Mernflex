@@ -24,11 +24,16 @@
     background-size: 80px;
     margin-top: 1vh;
     margin-bottom: 1vh;
+    border-radius: 5px;
+}
+
+.profile-icon:hover{
+    border: 2px white solid;
 }
 
 .profiles{
     display: flex;
-    width: 30%;
+    width: 60%;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
@@ -45,6 +50,7 @@
 
 .profile-page h1{
     color: white;
+    margin-bottom: 10vh;
 }
 
 .create-profile{

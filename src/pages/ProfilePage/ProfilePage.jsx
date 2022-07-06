@@ -10,7 +10,8 @@ const propic6 = require("../../images/profile-icon6.png")
 
 export default function ProfilePage({profiles}) {
     const [visible, setVisible] = useState(false)
-    const [profilesTry, setProfilesTry] = useState([])
+    // const [profilesTry, setProfilesTry] = useState([])
+    const [profileList, setProfileList] = useState([])
     const [profile, setProfile] = useState({
         ProfileName: ''
       });
@@ -42,18 +43,20 @@ export default function ProfilePage({profiles}) {
 
       // console.log(profiles)
 
-      useEffect(function(){
-          async function getTheProfiles(){
-          const profiles = await ProfileAPI.getProfiles();
-          setProfilesTry(profiles) 
-        }
-        getTheProfiles()
-      },[])
+      //// used for the original showprofiles  ////
     
+      // useEffect(function(){
+      //     async function getTheProfiles(){
+      //     const profiles = await ProfileAPI.getProfiles();
+      //     setProfilesTry(profiles) 
+      //   }
+      //   getTheProfiles()
+      // },[])
 
-
-
-
+      // useEffect(() => {
+      //   setProfileList(profiles)
+      // }, [profiles]);
+    
     return(
         <div class="profile-page">
             <h1>Who's Watching?</h1>
