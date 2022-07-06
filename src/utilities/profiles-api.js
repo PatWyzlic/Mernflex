@@ -1,5 +1,13 @@
 import sendRequest from "./users-api"
+import sendRequestGet from "./sendRequest"
+
 const BASE_URL = "/"
+
+
+//Show Profile
+export function getProfiles(){
+    return sendRequest(BASE_URL)
+}
 
 // CREATE A PROFILE
 export function createProfile(req) {

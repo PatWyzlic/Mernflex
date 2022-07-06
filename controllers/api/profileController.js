@@ -3,18 +3,45 @@ const Profile = require("../../models/profileModel")
 const CheckToken = require("../../controllers/api/users")
 const User = require("../../models/user");
 
-/* async function createProfile(req, res) {
-    console.log('inprofilecontroller', req.body)
-   await Profile.create(req.body)
-   CheckToken.checkToken(req,res)
-   try{
-    user = req.user._id
-   }catch{
-    console.log(error)
-   }
-   Profile.findOneAndUpdate({_id: user}, {$push: {Profile}})
-} */
 
+// //Get Profile
+// function showProfiles(req,res){
+//     console.log("This is show profile route")
+//     let user;
+//     CheckToken.checkToken(req,res)
+//     try{
+//         user = req.user._id
+//         console.log("User:", user)
+//         User.findById(user)
+//         .populate("Profiles")
+//         .then(foundUser=>{
+//             console.log(foundUser)
+//             return foundUser
+//         })
+//     } catch(error){
+//         console.log(error)
+//     }
+// }
+
+//Get Profile try 2
+async function showProfiles(req,res){
+    let user;
+    try{
+        CheckToken.checkToken(req,res)
+        try{
+            user = req.user._id
+            console.log("User:", user)
+        } catch(error){
+            console.log(error)
+        }
+        const profileList = await (await User.findById(user)).populate("profiles")
+        res.json(profileList)
+    } catch(error){
+        res.status(400).json("Bad Serverside")
+    }
+}
+
+// Create Profile
 function createProfile(req, res){
     let user;
     CheckToken.checkToken(req,res)
@@ -36,4 +63,7 @@ function createProfile(req, res){
 }
 
 
-module.exports = {createProfile}
+module.exports = {
+    createProfile,
+    showProfiles
+}
