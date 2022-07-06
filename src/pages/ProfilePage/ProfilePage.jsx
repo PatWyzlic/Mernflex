@@ -16,7 +16,7 @@ export default function ProfilePage() {
                     <div>
                         <form className="form" onSubmit={ProfileAPI.createProfile}>
                             <input type="text"
-                            placeholder="Create Profile"name ="ProfileName"></input>
+                            placeholder="Create Profile"value ="ProfileName"></input>
                             {/* <input type="checkbox" value="autoPlay"></input> */}
                             <input type="submit" className="hover"></input>
                         </form>
