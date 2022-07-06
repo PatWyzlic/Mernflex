@@ -1,5 +1,7 @@
 import sendRequest from "./users-api"
-const BASE_URL = "/profiles"
+import sendRequestGet from "./sendRequest"
+
+const BASE_URL = "/"
 
 
 //Show Profile

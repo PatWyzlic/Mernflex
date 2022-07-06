@@ -4,6 +4,7 @@ import * as ProfileAPI from "../../utilities/profiles-api";
 
 export default function ProfilePage({profiles}) {
     const [visible, setVisible] = useState(false)
+    // const [profilesTry, setProfilesTry] = useState([])
     const [profile, setProfile] = useState({
         ProfileName: ''
       });
@@ -26,12 +27,28 @@ export default function ProfilePage({profiles}) {
       }
 
       console.log(profiles)
+
+      // useEffect(function(){
+      //   async function getTheProfiles(){
+      //     const profiles = await ProfileAPI.getProfiles();
+      //     setProfilesTry(profiles) 
+      //   }
+      //   getTheProfiles()
+      // },[])
     
     return(
-        <div>
+        <div class="profile-page">
             <h1>Who's Watching?</h1>
-
-            <a className="text-standards hover" onClick={() => setVisible(!visible)}>{visible ? '-' : '+'}</a>
+            <div className="profiles">
+              {profiles.map((profile) => {
+            return <div className="profile-cont">
+                      {/* <div class="profile-icon"></div> */}
+                      <img className = "profile-icon" src={require("../../images/profile-icon1.png")} alt="" />
+                      <h4>{profile.ProfileName}</h4>
+                  </div>
+          })}
+          <div className="profile-cont">
+            <a className="profile-icon create-profile text-standards hover" onClick={() => setVisible(!visible)}>{visible ? '-' : '+'}</a>
                 {visible && 
                     <div>
                         <form className="form" onSubmit={handleSubmit}>
@@ -45,6 +62,10 @@ export default function ProfilePage({profiles}) {
                             <input type="submit" className="hover"></input>
                         </form>
                     </div> }
+            <h4>Create Profile</h4>
+          </div>
+        </div>
+
 
             <button>Manage Profiles</button>
             

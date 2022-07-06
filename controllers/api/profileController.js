@@ -4,22 +4,40 @@ const CheckToken = require("../../controllers/api/users")
 const User = require("../../models/user");
 
 
-//Get Profile
-function showProfiles(req,res){
-    console.log("This is show profile route")
+// //Get Profile
+// function showProfiles(req,res){
+//     console.log("This is show profile route")
+//     let user;
+//     CheckToken.checkToken(req,res)
+//     try{
+//         user = req.user._id
+//         console.log("User:", user)
+//         User.findById(user)
+//         .populate("Profiles")
+//         .then(foundUser=>{
+//             console.log(foundUser)
+//             return foundUser
+//         })
+//     } catch(error){
+//         console.log(error)
+//     }
+// }
+
+//Get Profile try 2
+async function showProfiles(req,res){
     let user;
-    CheckToken.checkToken(req,res)
     try{
-        user = req.user._id
-        console.log("User:", user)
-        User.findById(user)
-        .populate("Profiles")
-        .then(foundUser=>{
-            console.log(foundUser)
-            return foundUser
-        })
+        CheckToken.checkToken(req,res)
+        try{
+            user = req.user._id
+            console.log("User:", user)
+        } catch(error){
+            console.log(error)
+        }
+        const profileList = await (await User.findById(user)).populate("profiles")
+        res.json(profileList)
     } catch(error){
-        console.log(error)
+        res.status(400).json("Bad Serverside")
     }
 }
 
