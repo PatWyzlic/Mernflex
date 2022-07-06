@@ -25,7 +25,8 @@ export default function SignUp({setUser}) {
             // We don't want to send the 'error' or 'confirm' property,
             //  so let's make a copy of the state object, then delete them
             console.log("formData:", formData)
-            const formDataCopy = {formData}
+            const formDataCopy = {...formData}
+            console.log(formDataCopy)
             delete formDataCopy.error
             delete formDataCopy.confirm
             // The promise returned by the signUp service method 
