@@ -1,5 +1,6 @@
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import "./Modal.css"
 
 export default function MyVerticallyCenteredModal(props) {
     return (
@@ -11,7 +12,7 @@ export default function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
+           <img className= "modal-img" src={`https://image.tmdb.org/t/p/w500${props.clickedmovie.poster_path}`} alt="" />
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
