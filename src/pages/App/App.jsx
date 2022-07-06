@@ -21,6 +21,9 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path="/" element={<ProfilePage profiles={user.Profiles}/>}/>
+            {/* <Route path="/" element={<ProfilePage/>} /> */}
+      
+
             <Route path="/home" element={<HomePage/>} />
             <Route path="/movies" element={<IndexPage/>} />
             <Route path="/tvshows" element={<TVShowPage/>} />
