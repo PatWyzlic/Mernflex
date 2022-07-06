@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import { signUp } from '../../utilities/users-service.js'
 
+
 export default class SignUpForm extends Component {
     state = {
         username: '',
@@ -8,6 +9,8 @@ export default class SignUpForm extends Component {
         confirm: '',
         error: ''
     }
+    
+    
 
     // The object passed to setState is merged with the current state object
     handleChange = (evt) => {
@@ -30,6 +33,7 @@ export default class SignUpForm extends Component {
             // payload of the JSON Web Token (JWT)
             const user = await signUp(formData)
             this.props.setUser(user)
+            this.props.navigation.navigate('profiles')
         } catch {
             // If an error occurred
             this.setState({ error: 'Sign Up Failed - Try again'})

@@ -1,7 +1,7 @@
 import './App.css';
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import AuthPage from '../AuthPage/AuthPage';
-import IndexPage from '../IndexPage/IndexPage';
+import MoviePage from '../MoviePage/MoviePage';
 import { Routes, Route } from 'react-router-dom'
 import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-service';
@@ -12,20 +12,21 @@ import HomePage from "../HomePage/HomePage"
 
 export default function App() {
   const [user, setUser] = useState(getUser())
+  console.log("app.js User:", user)
+  const [clickedProfile, setClickedProfile] = useState("")
   const [listName, setListName] = useState("")
 
   return (
     <main className="App">
       {user ?
       <>
-          <NavBar user={user} setUser={setUser} />
+          <NavBar user={user} setUser={setUser} clickedProfile={clickedProfile} />
           <Routes>
-            <Route path="/" element={<ProfilePage profiles={user.Profiles}/>}/>
+            <Route path="/profiles" element={<ProfilePage profiles={user.Profiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             {/* <Route path="/" element={<ProfilePage/>} /> */}
       
-
             <Route path="/home" element={<HomePage/>} />
-            <Route path="/movies" element={<IndexPage/>} />
+            <Route path="/movies" element={<MoviePage/>} />
             <Route path="/tvshows" element={<TVShowPage/>} />
             {/* <Route path="/orders/new" element={<NewOrderPage />} />
             <Route path="/orders" element={<OrderHistoryPage />} /> */}

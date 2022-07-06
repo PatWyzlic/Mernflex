@@ -2,7 +2,7 @@ import './NavBar.css'
 import { Link } from 'react-router-dom'
 import * as userService from '../../utilities/users-service'
 
-export default function NavBar({ user, setUser }) {
+export default function NavBar({ user, setUser, clickedProfile }) {
     
     // Add the following function
     function handleLogOut() {
@@ -11,6 +11,7 @@ export default function NavBar({ user, setUser }) {
         // Update state will also cause a re-render
         setUser(null)
     }
+
 
     return(
 
@@ -23,16 +24,16 @@ export default function NavBar({ user, setUser }) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/home">Home</a>
+                        <Link className="nav-link" to="/home">Home</Link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/tvshows">TV Shows</a>
+                        <Link className="nav-link" to="/tvshows">TV Shows</Link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/movies">Movies</a>
+                        <Link className="nav-link" to="/movies">Movies</Link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/watchlistpage">My Watchlist</a>
+                        <Link className="nav-link" to="/watchlistpage">My Watchlist</Link>
                     </li>
                 </ul>
                     <form class="form-inline nav-form my-2 my-lg-0 mr-auto">
@@ -42,6 +43,7 @@ export default function NavBar({ user, setUser }) {
                     <ul class="navbar-nav mr-auto ">
                     <li class="nav-item"> <Link className="nav-link" to="" onClick={handleLogOut}>Log Out</Link></li>
                     </ul>
+                    {clickedProfile.ProfileName}
             </div>
         </nav>
 )

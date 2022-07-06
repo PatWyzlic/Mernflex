@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
 import "./ProfilePage.css"
 import * as ProfileAPI from "../../utilities/profiles-api";
+import { Link } from 'react-router-dom'
+
 const propic1 = require("../../images/profile-icon1.png")
 const propic2 = require("../../images/profile-icon2.png")
 const propic3 = require("../../images/profile-icon3.png")
@@ -8,9 +10,10 @@ const propic4 = require("../../images/profile-icon4.png")
 const propic5 = require("../../images/profile-icon5.png")
 const propic6 = require("../../images/profile-icon6.png")
 
-export default function ProfilePage({profiles}) {
+export default function ProfilePage({profiles, clickedProfile, setClickedProfile}) {
     const [visible, setVisible] = useState(false)
-    // const [profilesTry, setProfilesTry] = useState([])
+    const [profilesTry, setProfilesTry] = useState([])
+    console.log(profilesTry)
     const [profileList, setProfileList] = useState([])
     const [profile, setProfile] = useState({
         ProfileName: ''
@@ -41,21 +44,27 @@ export default function ProfilePage({profiles}) {
         }
       }
 
+      async function handleClick(evt){
+        await setClickedProfile(evt)
+        console.log("clicked Profile:", clickedProfile)
+      }
+
       // console.log(profiles)
 
       //// used for the original showprofiles  ////
     
-      // useEffect(function(){
-      //     async function getTheProfiles(){
-      //     const profiles = await ProfileAPI.getProfiles();
-      //     setProfilesTry(profiles) 
-      //   }
-      //   getTheProfiles()
-      // },[])
+      useEffect(function(){
+          async function getTheProfiles(){
+          const profiles = await ProfileAPI.getProfiles();
+          console.log(profiles)
+          setProfilesTry(profiles) 
+        }
+        getTheProfiles()
+      },[])
 
-      // useEffect(() => {
-      //   setProfileList(profiles)
-      // }, [profiles]);
+      useEffect(() => {
+        setProfileList(profiles)
+      }, [profiles]);
     
     return(
         <div class="profile-page">
@@ -65,7 +74,7 @@ export default function ProfilePage({profiles}) {
                 randomimg()
             return <div className="profile-cont">
                       {/* <div class="profile-icon"></div> */}
-                      <img className = "profile-icon" src={images[ran]} alt="" />
+                      <Link to="/movies"><img className = "profile-icon" src={images[ran]} alt="" onClick={() => handleClick(profile)}/></Link>
                       <h4>{profile.ProfileName}</h4>
                   </div>
           })}
@@ -87,10 +96,7 @@ export default function ProfilePage({profiles}) {
             <h4>Create Profile</h4>
           </div>
         </div>
-
-
             <button>Manage Profiles</button>
-            
         </div>
         
     );
