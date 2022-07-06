@@ -43,7 +43,7 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
 
       async function handleClick(evt){
         await setClickedProfile(evt)
-        console.log("clicked Profile:", clickedProfile._id)
+        console.log("clicked Profile:", clickedProfile)
       }
 
       // console.log(profiles)

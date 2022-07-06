@@ -12,7 +12,7 @@ import HomePage from "../HomePage/HomePage"
 
 export default function App() {
   const [user, setUser] = useState(getUser())
-  const [clickedProfile, setClickedProfile] = useState()
+  const [clickedProfile, setClickedProfile] = useState("")
   const [listName, setListName] = useState("")
 
   return (

@@ -2,7 +2,7 @@ import './NavBar.css'
 import { Link } from 'react-router-dom'
 import * as userService from '../../utilities/users-service'
 
-export default function NavBar({ user, setUser }) {
+export default function NavBar({ user, setUser, clickedProfile }) {
     
     // Add the following function
     function handleLogOut() {
@@ -11,6 +11,7 @@ export default function NavBar({ user, setUser }) {
         // Update state will also cause a re-render
         setUser(null)
     }
+
 
     return(
 
@@ -42,6 +43,7 @@ export default function NavBar({ user, setUser }) {
                     <ul class="navbar-nav mr-auto ">
                     <li class="nav-item"> <Link className="nav-link" to="" onClick={handleLogOut}>Log Out</Link></li>
                     </ul>
+                    {clickedProfile.ProfileName}
             </div>
         </nav>
 )
