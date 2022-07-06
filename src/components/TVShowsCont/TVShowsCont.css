@@ -1,0 +1,50 @@
+.tv-show {
+    height: 200px;
+    padding-top: 10px;
+    margin-left: .3vw;
+    cursor: pointer;
+  }
+  
+  .tv-show img {
+    width: 160px;
+  }
+  
+  .relative {
+    height: 53vw;
+  }
+  
+  .tv-show-row {
+    max-height: 220px;
+    display: flex;
+    width: 100vw;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    margin-bottom: 4vh;
+  }
+  .row-Title {
+    margin: 0;
+    margin-left: .3vw;
+    color: white;
+
+  }
+  
+  .backdrop {
+    width: 100vw;
+    min-height: 20vh;
+    max-height: 80vh;
+    position: absolute;
+  }
+  .featuredTitle {
+    position: absolute;
+    margin: 1vw;
+  }
+  .featuredOverview {
+    position: absolute;
+    width: 40vw;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5%;
+    padding: 1vw;
+    margin: 1vw;
+  }
+  
