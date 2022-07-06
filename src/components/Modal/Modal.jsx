@@ -54,14 +54,14 @@ export default function MyVerticallyCenteredModal(props) {
         </Modal.Body>
         <Modal.Footer>
           <form> 
-            <input type="text"placeholder='Title' />
-            <input type="text"placeholder='Posterpath' />
-            <input type="text"placeholder='Description' />
-            <input type="text"placeholder='MovieId' />
-            <input type="text"placeholder='ReleaseDate' />
-            <input type="text"placeholder='Genres' />
-            <input type="text"placeholder='Popularity' />
-            <button type="submit">Submit</button>
+            <input type="hidden"placeholder='Title' />
+            <input type="hidden"placeholder='Posterpath' />
+            <input type="hidden"placeholder='Description' />
+            <input type="hidden"placeholder='MovieId' />
+            <input type="hidden"placeholder='ReleaseDate' />
+            <input type="hidden"placeholder='Genres' />
+            <input type="hidden"placeholder='Popularity' />
+            <button type="hidden">Add to Watchlist</button>
           </form>
           <Button onClick={props.onHide}>Close</Button>
           
