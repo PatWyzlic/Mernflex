@@ -4,7 +4,7 @@ import * as ProfileAPI from "../../utilities/profiles-api";
 
 export default function ProfilePage({profiles}) {
     const [visible, setVisible] = useState(false)
-    // const [profilesTry, setProfilesTry] = useState([])
+    const [profilesTry, setProfilesTry] = useState([])
     const [profile, setProfile] = useState({
         ProfileName: ''
       });
@@ -26,15 +26,15 @@ export default function ProfilePage({profiles}) {
         }
       }
 
-      console.log(profiles)
+      // console.log(profiles)
 
-      // useEffect(function(){
-      //   async function getTheProfiles(){
-      //     const profiles = await ProfileAPI.getProfiles();
-      //     setProfilesTry(profiles) 
-      //   }
-      //   getTheProfiles()
-      // },[])
+      useEffect(function(){
+          async function getTheProfiles(){
+          const profiles = await ProfileAPI.getProfiles();
+          setProfilesTry(profiles) 
+        }
+        getTheProfiles()
+      },[])
     
     return(
         <div class="profile-page">
