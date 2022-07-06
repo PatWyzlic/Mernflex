@@ -13,6 +13,7 @@ const propic6 = require("../../images/profile-icon6.png")
 export default function ProfilePage({profiles, clickedProfile, setClickedProfile}) {
     const [visible, setVisible] = useState(false)
     const [profilesTry, setProfilesTry] = useState([])
+    console.log(profilesTry)
     const [profileList, setProfileList] = useState([])
     const [profile, setProfile] = useState({
         ProfileName: ''
@@ -55,6 +56,7 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
       useEffect(function(){
           async function getTheProfiles(){
           const profiles = await ProfileAPI.getProfiles();
+          console.log(profiles)
           setProfilesTry(profiles) 
         }
         getTheProfiles()
@@ -72,7 +74,7 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
                 randomimg()
             return <div className="profile-cont">
                       {/* <div class="profile-icon"></div> */}
-                      <img className = "profile-icon" src={images[ran]} alt="" onClick={() => handleClick(profile)}/>
+                      <Link to="/movies"><img className = "profile-icon" src={images[ran]} alt="" onClick={() => handleClick(profile)}/></Link>
                       <h4>{profile.ProfileName}</h4>
                   </div>
           })}
@@ -94,10 +96,7 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
             <h4>Create Profile</h4>
           </div>
         </div>
-
-
             <button>Manage Profiles</button>
-            
         </div>
         
     );
