@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./ProfilePage.css"
 import * as ProfileAPI from "../../utilities/profiles-api";
 
-export default function ProfilePage() {
+export default function ProfilePage({profiles}) {
     const [visible, setVisible] = useState(false)
     const [profile, setProfile] = useState({
         ProfileName: ''
@@ -24,7 +24,8 @@ export default function ProfilePage() {
           setError('Profile creation failed');
         }
       }
-    
+
+      console.log(profiles)
     
     return(
         <div>
