@@ -14,7 +14,8 @@ function showProfiles(req,res){
         User.findById(user)
         .populate("Profiles")
         .then(foundUser=>{
-            console.log(foundUser)
+            console.log("foundUser", foundUser)
+            // res.json(foundUser)
             return foundUser
         })
     } catch(error){

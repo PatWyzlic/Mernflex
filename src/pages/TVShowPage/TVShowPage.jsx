@@ -1,4 +1,4 @@
-import "../IndexPage/IndexPage.css"
+import "../MoviePage/MoviePage.css"
 import { useState } from "react"
 import genres from '../../components/genres.js'
 import FeaturedTVShows from "../../components/FeaturedShow/FeaturedShow"

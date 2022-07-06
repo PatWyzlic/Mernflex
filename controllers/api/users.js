@@ -9,8 +9,10 @@ module.exports = {
 }
 
 async function login(req, res) {
+    console.log("Hitting")
     try {
-        const user = await (await User.findOne({ email: req.body.email })).populate("Profiles")
+        const user = await (await User.findOne({ username: req.body.username })).populate("Profiles")
+        console.log("user is:", user)
         if (!user) throw new Error()
         const match = await bcrypt.compare(req.body.password, user.password)
         if (!match) throw new Error()

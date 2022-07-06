@@ -1,57 +1,59 @@
 import { Component } from 'react'
+import { useState } from 'react';
 import { signUp } from '../../utilities/users-service.js'
 
-export default class SignUpForm extends Component {
-    state = {
+
+export default function SignUp({setUser}) {
+    const [formData, setFormData]= useState({
         username: '',
         password: '',
         confirm: '',
         error: ''
-    }
-
+    })
+    
     // The object passed to setState is merged with the current state object
-    handleChange = (evt) => {
-        this.setState({
-            [evt.target.name]: evt.target.value,
+   async function handleChange(evt){
+        await setFormData({
+            ... formData,[evt.target.name]: evt.target.value,
             error: ''
         });
     };
 
-    handleSubmit = async (evt) => {
+    async function handleSubmit(evt){
         evt.preventDefault()
         try {
             // We don't want to send the 'error' or 'confirm' property,
             //  so let's make a copy of the state object, then delete them
-            const formData = {...this.state}
-            delete formData.error
-            delete formData.confirm
+            console.log("formData:", formData)
+            const formDataCopy = {formData}
+            delete formDataCopy.error
+            delete formDataCopy.confirm
             // The promise returned by the signUp service method 
             // will resolve to the user object included in the
             // payload of the JSON Web Token (JWT)
-            const user = await signUp(formData)
-            this.props.setUser(user)
+            const user = await signUp(formDataCopy)
+            console.log("singupform user:", user)
+            setUser(user)
         } catch {
             // If an error occurred
-            this.setState({ error: 'Sign Up Failed - Try again'})
+            setFormData({ error: 'Sign Up Failed - Try again'})
         }
     }
 
-    render() {
-        const disable = this.state.password !== this.state.confirm;
+        const disable = formData.password !== formData.confirm;
         return (
             <div className='highest-cont'>
                 <div className="form-container">
                     <h2>Unlimited Movies, Tv Shows and More</h2>
                     <h4>Watch Anywhere, Cancel Anytime</h4>
-                    <form autoComplete="off" onSubmit={this.handleSubmit}>
-                        <input type="text" name="username" placeholder='Username' value={this.state.user} onChange={this.handleChange} required />
-                        <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} required />
-                        <input type="password" name="confirm" placeholder="Confirm" value={this.state.confirm} onChange={this.handleChange} required />
+                    <form autoComplete="off" onSubmit={handleSubmit}>
+                        <input type="text" name="username" placeholder='Username' value={formData.user} onChange={handleChange} required />
+                        <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
+                        <input type="password" name="confirm" placeholder="Confirm" value={formData.confirm} onChange={handleChange} required />
                         <button type="submit" disabled={disable}>SIGN UP</button>
                     </form>
                 </div>
-                <p className="error-message">&nbsp;{this.state.error}</p>
+                <p className="error-message">&nbsp;{formData.error}</p>
             </div>
         );
-    }
 }
