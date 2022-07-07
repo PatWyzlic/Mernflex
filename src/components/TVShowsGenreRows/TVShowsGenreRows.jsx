@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 
-export default function TVShowsGenreRows({ API_KEY, genreId, genreName }){
+export default function TVShowsGenreRows({ API_KEY, genreId, genreName}){
 
   const [tvShows, setTVShows] = useState([]);
 
