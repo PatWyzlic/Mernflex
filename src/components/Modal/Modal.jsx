@@ -88,28 +88,32 @@ export default function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-           <img className= "modal-img" src={`https://image.tmdb.org/t/p/w500${props.clickedmovie.poster_path}`} alt="" />
+            {props.clickedmovie.title}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>{props.clickedmovie.title}</h4>
-          <p>
-            {props.clickedmovie.overview}
-          </p>
-          <ul>
-            {genreNames.map((genre) => {
-              return (
-             <li>
-              {genre}
-             </li>
-              )
-            })}
-          </ul>
-          <p>
-            releaseDate: {props.clickedmovie.release_date}
-          </p>
+          <div className="videoCont">
+        <iframe
+                className="video"
+                src={modalVideoUrl}
+                allow="autoplay"
+                title="YouTube video player"
+                frameborder="0"
+                allowFullScreen
+                ></iframe>
+          </div>
         </Modal.Body>
         <Modal.Footer>
+          <div className="footer-info">
+            <div className="overview">
+              <p>{props.clickedmovie.overview}</p>
+            </div>
+            <div className="info">
+              <div>{genreNamesList}</div>
+              <div>Released: {props.clickedmovie.release_date}</div>
+            </div>
+          </div>
+          
             <div className="modal-btns">
             <form onSubmit={handleSubmit}> 
                 {/* <input type="hidden" placeholder='Title' value={props.clickedmovie.title} name="Title" />
