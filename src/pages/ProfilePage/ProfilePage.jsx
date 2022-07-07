@@ -21,21 +21,9 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
       const [error, setError] = useState('');
 
       const images = [propic1,propic2,propic3,propic4,propic5,propic6]
-      
-
-      let ran
-      function randomimg (){
-       ran = Math.floor(Math.random() * images.length)
-       return ran
-      }
+  
     
       function handleChange(evt) {
-
-        const newProfile= {
-          imgClr: randomimg(),
-          [evt.target.name]: evt.target.value
-        }
-        console.log(newProfile)
 
         setProfile({ ...profile, [evt.target.name]: evt.target.value });
         setError('');
@@ -79,10 +67,9 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
             <h1>Who's Watching?</h1>
             <div className="profiles">
               {profiles.map((profile) => {
-                randomimg()
             return <div className="profile-cont">
                       {/* <div class="profile-icon"></div> */}
-                      <Link to="/movies"><img className = "profile-icon" src={images[ran]} alt="" onClick={() => handleClick(profile)}/></Link>
+                      <Link to="/movies"><img className = "profile-icon" src={images[profile.ProfileImg]} alt="" onClick={() => handleClick(profile)}/></Link>
                       <h4>{profile.ProfileName}</h4>
                   </div>
           })}
@@ -97,6 +84,15 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
                             value={profile.ProfileName}
                             onChange={handleChange}>
                             </input>
+                            <label>Profile Pic</label>
+                            <select name="ProfileImg" size="3" onChange={handleChange}>
+                              <option value="0">Blue</option>
+                              <option value="1">Yellow</option>
+                              <option value="2">Red</option>
+                              <option value="3">Dark Blue</option>
+                              <option value="4">Purple</option>
+                              <option value="5">Green</option>
+                            </select>
                             {/* <input type="checkbox" value="autoPlay"></input> */}
                             <input type="submit" className="hover"></input>
                         </form>
