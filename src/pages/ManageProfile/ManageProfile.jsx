@@ -82,7 +82,7 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
                 randomimg()
             return <div className="profile-cont">
                       {/* <div class="profile-icon"></div> */}
-                      <Link to={`/profiles/manage/${profile._id}`}><img className = "profile-icon" src={images[ran]} alt="" onClick={() => handleClick(profile)}/></Link>
+                      <Link to={`/profiles/manage/${profile.ProfileName}`}><img className = "profile-icon" src={images[ran]} alt="" onClick={() => handleClick(profile)}/></Link>
                       <h4>{profile.ProfileName}</h4>
                   </div>
           })}
