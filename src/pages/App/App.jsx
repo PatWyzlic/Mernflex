@@ -44,7 +44,7 @@ export default function App() {
             {/* <Route path="/" element={<ProfilePage/>} /> */}
             <Route path="/profiles" element={<ProfilePage profiles={user.Profiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             <Route path="/profiles/manage" element={<ManageProfile profiles={user.Profiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
-            <Route path="/profiles/manage/:profileId" element={<EditProfile profiles={user.Profiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
+            <Route path="/profiles/manage/:id" element={<EditProfile profiles={user.Profiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             
             <Route path="/home" element={<HomePage/>} />
             <Route path="/movies" element={<MoviePage/>} />
