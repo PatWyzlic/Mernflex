@@ -22,7 +22,7 @@ export default function TVShowsGenreRows({ API_KEY, genreId, genreName}){
 
   if(App.newestInputFunction() === ""){
     return(
-        <>
+    <>
       <h4 className="row-Title">{genreName}</h4>
       <div className="movie-row">
         {tvShows.map((tvShow) => {
@@ -38,8 +38,7 @@ export default function TVShowsGenreRows({ API_KEY, genreId, genreName}){
         })}
       </div>
     </>
-    )
-    }else{
+    )}else{
         return(
         <>
             {tvShows.map((tvShow) => {
