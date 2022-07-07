@@ -11,7 +11,12 @@ export function getProfiles(){
 
 // CREATE A PROFILE
 export function createProfile(req) {
-    console.log("createProfile")
     return sendRequest (BASE_URL, "POST", req
+    )
+}
+
+// CREATE A PROFILE
+export function editProfile(req) {
+    return sendRequest.sendRequestPut (`${BASE_URL}/manage/:id`, "POST", req
     )
 }
