@@ -45,8 +45,10 @@ export default function NavBar({ user, setUser, clickedProfile, inputHandler}) {
                     </form>
                     <ul class="navbar-nav mr-auto ">
                     <li class="nav-item"> <Link className="nav-link" to="" onClick={handleLogOut}>Log Out</Link></li>
+                    <li class="nav-item">
+                        <Link className="nav-link" to="/profiles">{clickedProfile.ProfileName}</Link>
+                    </li>
                     </ul>
-                    {clickedProfile.ProfileName}
             </div>
         </nav>
 )
