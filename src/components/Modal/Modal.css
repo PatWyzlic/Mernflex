@@ -1,3 +1,18 @@
 .modal-img{
     height: 100px
 }
+
+.modal-btns{
+    display: flex;
+    flex-direction: row;
+}
+
+.videoCont{
+    width: 53vh;
+    height: 40vh;
+}
+
+.video{
+    width: 53vw;
+    height: 40vh;
+}

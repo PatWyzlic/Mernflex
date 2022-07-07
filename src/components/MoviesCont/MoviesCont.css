@@ -47,4 +47,8 @@
     padding: 1vw;
     margin: 1vw;
   }
+
+  .movie:hover{
+    transform: scale(1.5);
+  }
   

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import MyVerticallyCenteredModal from "../Modal/Modal"
 import "./MoviesCont.css"
-
+import * as App from "../../pages/App/App"
 
 
 export default function MoviesCont({API_KEY, SetMovies, movies}){
@@ -30,7 +30,7 @@ export default function MoviesCont({API_KEY, SetMovies, movies}){
     console.log(clickedMovie)
   }
 
-    return(
+  if(App.newestInputFunction() === ""){
         <>
         <h4 className="row-Title">Featured Films</h4>
         <div className="movie-row">
@@ -46,10 +46,29 @@ export default function MoviesCont({API_KEY, SetMovies, movies}){
             show={modalShow}
             onHide={() => setModalShow(false)}
             clickedmovie={clickedMovie}
+            API_KEY={API_KEY}
           />
           </div>
           })}
         </div>
       </>
-    )
+  }else{
+    <>
+          {movies.map((movie) => {
+            return <>
+            <img
+              className="movie"
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt=""
+              onClick={() => clickedMovies(movie)}
+            />
+            <MyVerticallyCenteredModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            clickedmovie={clickedMovie}
+          />
+          </>
+          })}
+      </>
+  }
 }

@@ -39,18 +39,18 @@ export default function MyVerticallyCenteredModal(props) {
     
     useEffect(() => {
       setWatchListMovie(
-        {Title: props.clickedmovie.title,
+        {Title: props.clickedmovie.name,
           Description: props.clickedmovie.overview, 
           MovieDbId: props.clickedmovie.id,
           PosterPath: props.clickedmovie.poster_path,
           Genres: genreNamesList ,
-          ReleaseDate: props.clickedmovie.release_date,
+          ReleaseDate: props.clickedmovie.first_air_date,
           Popularity: props.clickedmovie.popularity}
           );
       getFeaturedFilmVideo(URL_Featured_Video)
         },[props.clickedmovie]);
 
-        const URL_Featured_Video = `https://api.themoviedb.org/3/movie/${props.clickedmovie.id}/videos?api_key=${props.API_KEY}&language=en-US`
+        const URL_Featured_Video = `https://api.themoviedb.org/3/tv/${props.clickedmovie.id}/videos?api_key=${props.API_KEY}&language=en-US`
         
         function getFeaturedFilmVideo(url) {
           fetch(url)
@@ -88,7 +88,7 @@ export default function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            {props.clickedmovie.title}
+            {props.clickedmovie.name}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -110,7 +110,7 @@ export default function MyVerticallyCenteredModal(props) {
             </div>
             <div className="info">
               <div>{genreNamesList}</div>
-              <div>Released: {props.clickedmovie.release_date}</div>
+              <div>First Aired: {props.clickedmovie.first_air_date}</div>
             </div>
           </div>
           
@@ -131,11 +131,3 @@ export default function MyVerticallyCenteredModal(props) {
       </Modal>
     );
   }
-
-
-
-
-
-
-
-

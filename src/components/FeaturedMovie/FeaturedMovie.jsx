@@ -1,8 +1,6 @@
 import "./FeaturedMovie.css";
 import {useEffect, useState} from "react"
-
-
-
+import * as App from "../../pages/App/App"
 
 export default function FeaturedMovie({API_KEY}){
 
@@ -34,9 +32,8 @@ export default function FeaturedMovie({API_KEY}){
       getFeaturedFilm(URL_Featured)
     }, []);
   
-
-    return(
-        <div className="featuredFilmCont">
+      {if( App.newestInputFunction() === ""){
+        return (<div className="featuredFilmCont">
             <iframe
                 className="video"
                 width="800"
@@ -45,12 +42,13 @@ export default function FeaturedMovie({API_KEY}){
                 allow="autoplay"
                 title="YouTube video player"
                 frameborder="0"
-                allowfullscreen
+                allowFullScreen
                 ></iframe>
-        <div className="feraturedinfo">
-            <h2>{featuredFilm.title}</h2>
-            <p>{featuredFilm.overview}</p>
+          <div className="feraturedinfo">
+              <h2>{featuredFilm.title}</h2>
+              <p>{featuredFilm.overview}</p>
+          </div>
         </div>
-        </div>
-    )
+        )}
+      }
 }
