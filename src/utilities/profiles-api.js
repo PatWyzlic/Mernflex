@@ -1,5 +1,5 @@
 import sendRequest from "./users-api"
-// import sendRequestGet from "./sendRequest"
+import sendRequestPut from "./sendRequest"
 
 const BASE_URL = "/profiles"
 
@@ -17,6 +17,6 @@ export function createProfile(req) {
 
 // CREATE A PROFILE
 export function editProfile(req, id) {
-    return sendRequest(`${BASE_URL}/manage/${id}`, "PUT", req
+    return sendRequestPut(`${BASE_URL}/manage/${id}`, "PUT", req
     )
 }

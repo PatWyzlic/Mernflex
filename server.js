@@ -19,13 +19,14 @@ app.use(express.static(path.join(__dirname, 'build')));
 // Middleware to verify token and assign user object of payload to req.user.
 // Be sure to mount before routes
 app.use(require('./config/checkToken'));
+const cors = require('cors');  
+app.use(cors());
 
 
 // Put API routes here, before the "catch all" route
 const ensureLoggedIn = require('./config/ensureLoggedIn');
 app.use('/api/users', require('./routes/api/users'))
 app.use('/profiles', require('./routes/api/profiles'))
-app.use('/manage', require('./routes/api/profiles'))
 // app.use('/watchlist', require('./routes/api/watchlist'))
 
 // The following "catch all" route (note the *) is necessary
