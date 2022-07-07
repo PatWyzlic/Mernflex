@@ -1,5 +1,6 @@
 import "./EditProfile.css"
 import {useState} from "react"
+import * as ProfileAPI from "../../utilities/profiles-api"
 
 
 export default function EditProfile(props){
@@ -15,8 +16,9 @@ export default function EditProfile(props){
         // Prevent form from being submitted to the server
         evt.preventDefault();
         try {
-            // const EditedProfile = await ProfileAPI.createProfile(profile); //unsure how to send the profile id here? OR don't fullu understand how this is going to edit the profile. 
-            // setProfileName(EditedProfile);
+        const EditedProfile = await ProfileAPI.editProfile(profileName);
+        setProfileName(EditedProfile);
+
         } catch(error) {
             console.log(error)
         }
