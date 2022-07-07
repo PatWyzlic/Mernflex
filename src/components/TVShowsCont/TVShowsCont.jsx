@@ -18,15 +18,13 @@ export default function TVShowsCont({API_KEY, SetTVShows, tvShows}){
         getTVShows(mainUrl)
     }, []);
 
-    
-    return(
+    if(App.newestInputFunction() === ""){
+        return (
         <>
         <h4 className="row-Title">Featured TV Shows</h4>
         <div className="tv-show-row">
           {tvShows.map((tvShow) => {
             const theShow = tvShow.name.toLowerCase().split(' ').join('')
-            console.log("TVShowsCont", App.newestInputFunction())
-            if(theShow === App.newestInputFunction() || App.newestInputFunction() === ""){
             return <div className="tv-show">
             <img
               className="tv-show"
@@ -34,8 +32,24 @@ export default function TVShowsCont({API_KEY, SetTVShows, tvShows}){
               alt=""
             />
           </div>
-          }})}
+          })}
         </div>
-      </>
-    )
+        </>
+        )
+    }else{
+        return(
+        <>
+        {tvShows.map((tvShow) => {
+            const theShow = tvShow.name.toLowerCase().split(' ').join('')
+            if(theShow.includes(App.newestInputFunction())){
+            return <>
+            <img
+              className="tv-show"
+              src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
+              alt=""
+            />
+            </>
+          }})}
+          </>)
+    }
 }
