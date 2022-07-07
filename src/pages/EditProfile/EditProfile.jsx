@@ -13,10 +13,13 @@ console.log(props.clickedProfile._id)
 
     let {profileId} = useParams()
       async function handleSubmit(evt) {
+        console.log("handleSubmit running")
         // Prevent form from being submitted to the server
         evt.preventDefault();
         try {
-        const EditedProfile = await ProfileAPI.editProfile(profileName, props.clickedProfile._id);
+        console.log("Edit profile in handleSubmit")
+        console.log("Edit profile var = ", ProfileAPI.editProfile(profileName, props.clickedProfile._id))
+        let EditedProfile = await ProfileAPI.editProfile(profileName, props.clickedProfile._id);
         setProfileName(EditedProfile);
 
         } catch(error) {
@@ -29,7 +32,8 @@ console.log(props.clickedProfile._id)
         <h1> Edit {props.clickedProfile.ProfileName}</h1>
         <div>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder={props.clickedProfile.ProfileName} value={profileName} onChange={handleChange}/>
+                <input type="text" placeholder={props.clickedProfile.ProfileName} value={profileName} onChange={handleChange}
+                name="ProfileName"/>
                 <input type="submit" />
             </form>
         </div>
