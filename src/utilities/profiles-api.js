@@ -17,6 +17,6 @@ export function createProfile(req) {
 
 // CREATE A PROFILE
 export function editProfile(req) {
-    return sendRequest.sendRequestPut (`${BASE_URL}/manage/:id`, "POST", req
+    return sendRequest(`${BASE_URL}/manage/:id`, "POST", req
     )
 }
