@@ -15,6 +15,7 @@ function showProfiles(req,res){
         .populate("Profiles")
         .then(foundUser=>{
             console.log("foundUser", foundUser)
+            console.log("foundUserprofiles", foundUser.Profiles)
             // res.json(foundUser)
             return foundUser
         })

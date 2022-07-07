@@ -25,10 +25,18 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
 
       let ran
       function randomimg (){
-      ran = Math.floor(Math.random() * images.length)
+       ran = Math.floor(Math.random() * images.length)
+       return ran
       }
     
       function handleChange(evt) {
+
+        const newProfile= {
+          imgClr: randomimg(),
+          [evt.target.name]: evt.target.value
+        }
+        console.log(newProfile)
+
         setProfile({ ...profile, [evt.target.name]: evt.target.value });
         setError('');
       }
@@ -84,7 +92,11 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
                     <div>
                         <form className="form" onSubmit={handleSubmit}>
                             <input type="text"
-                            placeholder="Create Profile"value ="ProfileName"></input>
+                            placeholder="Create Profile" 
+                            name="ProfileName" 
+                            value={profile.ProfileName}
+                            onChange={handleChange}>
+                            </input>
                             {/* <input type="checkbox" value="autoPlay"></input> */}
                             <input type="submit" className="hover"></input>
                         </form>
@@ -97,4 +109,3 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
         
     );
   }
-  
