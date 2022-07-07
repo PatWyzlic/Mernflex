@@ -30,7 +30,7 @@ export default function MoviesCont({API_KEY, SetMovies, movies}){
     console.log(clickedMovie)
   }
 
-    return(
+  if(App.newestInputFunction() === ""){
         <>
         <h4 className="row-Title">Featured Films</h4>
         <div className="movie-row">
@@ -50,6 +50,25 @@ export default function MoviesCont({API_KEY, SetMovies, movies}){
           </div>
           })}
         </div>
+        )
       </>
-    )
+  }else{
+    <>
+          {movies.map((movie) => {
+            return <>
+            <img
+              className="movie"
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt=""
+              onClick={() => clickedMovies(movie)}
+            />
+            <MyVerticallyCenteredModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            clickedmovie={clickedMovie}
+          />
+          </>
+          })}
+      </>
+  }
 }
