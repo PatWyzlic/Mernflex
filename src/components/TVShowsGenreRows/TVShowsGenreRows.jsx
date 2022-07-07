@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import * as App from "../../pages/App/App"
 
 export default function TVShowsGenreRows({ API_KEY, genreId, genreName}){
 
@@ -20,6 +20,7 @@ export default function TVShowsGenreRows({ API_KEY, genreId, genreName}){
     getTVShows(mainUrl);
   }, []);
 
+  if(App.newestInputFunction() === ""){
     return(
         <>
       <h4 className="row-Title">{genreName}</h4>
@@ -38,4 +39,22 @@ export default function TVShowsGenreRows({ API_KEY, genreId, genreName}){
       </div>
     </>
     )
+    }else{
+        return(
+        <>
+            {tvShows.map((tvShow) => {
+                const theShow = tvShow.name.toLowerCase().split(' ').join('')
+                if(theShow.includes(App.newestInputFunction())){
+              return (
+                  <img
+                    className="tv-show"
+                    src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
+                    alt=""
+                  />
+              );
+            }
+            })}
+        </>
+        )
+    }
 }
