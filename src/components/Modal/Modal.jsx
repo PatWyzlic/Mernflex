@@ -18,52 +18,70 @@ export default function MyVerticallyCenteredModal(props) {
       Popularity: 0
     })
     const [error, setError] = useState('');
+    const [modalVideoUrl, SetModalVideoUrl] = useState([])
 
-
+    
+    
+    
     async function getgenres(){
-        for (let i =0; i < arr.length; i++){
-            // console.log(arr[i])
-            for (let j = 0; j < genres.length; j++){
-                if(genres[j].id === arr[i]){
-                    genreNames.push(genres[j].name)
-                }
-            }
+      for (let i =0; i < arr.length; i++){
+        // console.log(arr[i])
+        for (let j = 0; j < genres.length; j++){
+          if(genres[j].id === arr[i]){
+            genreNames.push(genres[j].name)
+          }
         }
+      }
     }
     
     getgenres()
     const genreNamesList = genreNames.toString()
-
+    
     useEffect(() => {
       setWatchListMovie(
         {Title: props.clickedmovie.title,
-        Description: props.clickedmovie.overview, 
-        MovieDbId: props.clickedmovie.id,
-        PosterPath: props.clickedmovie.poster_path,
-        Genres: genreNamesList ,
-        ReleaseDate: props.clickedmovie.release_date,
-        Popularity: props.clickedmovie.popularity}
-      )
-    },[props.clickedmovie]);
+          Description: props.clickedmovie.overview, 
+          MovieDbId: props.clickedmovie.id,
+          PosterPath: props.clickedmovie.poster_path,
+          Genres: genreNamesList ,
+          ReleaseDate: props.clickedmovie.release_date,
+          Popularity: props.clickedmovie.popularity}
+          );
+      getFeaturedFilmVideo(URL_Featured_Video)
+        },[props.clickedmovie]);
 
-    async function handleSubmit(evt){
-      evt.preventDefault()
-      try{
-        const newwatchlistitem = await WatchListAPI.createWatchListItem()
-        console.log('newwatchlistitem', newwatchlistitem)
-        setWatchListMovie(newwatchlistitem)
-      } catch {
-        setError("WATCHLIST ITEM CREATION FAILED")
-      }
+        const URL_Featured_Video = `https://api.themoviedb.org/3/movie/${props.clickedmovie.id}/videos?api_key=${props.API_KEY}&language=en-US`
+        
+        function getFeaturedFilmVideo(url) {
+          fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+              const videokey=data.results[0].key
+              SetModalVideoUrl(`https://www.youtube.com/embed/${videokey}?autoplay=1&loop=1&playlist=${videokey}&mute=1&rel=0`)
+            });
+          }
+        
 
-    }
-    console.log(watchListMovie)
-    
-    // console.log(genreNames)
-    return (
 
-      <Modal
-        {...props}
+
+        async function handleSubmit(evt){
+          evt.preventDefault()
+          try{
+            const newwatchlistitem = await WatchListAPI.createWatchListItem()
+            console.log('newwatchlistitem', newwatchlistitem)
+            setWatchListMovie(newwatchlistitem)
+          } catch {
+            setError("WATCHLIST ITEM CREATION FAILED")
+          }
+          
+        }
+        console.log(watchListMovie)
+        
+        // console.log(genreNames)
+        return (
+          
+          <Modal
+          {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered

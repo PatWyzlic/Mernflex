@@ -46,6 +46,7 @@ export default function MoviesCont({API_KEY, SetMovies, movies}){
             show={modalShow}
             onHide={() => setModalShow(false)}
             clickedmovie={clickedMovie}
+            API_KEY={API_KEY}
           />
           </div>
           })}
