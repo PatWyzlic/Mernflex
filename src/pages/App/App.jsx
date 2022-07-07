@@ -39,7 +39,7 @@ export default function App() {
     <main className="App">
       {user ?
       <>
-          <NavBar user={user} setUser={setUser} clickedProfile={clickedProfile} inputText={inputText} setInputText={setInputText} inputHandler={inputHandler} />
+          <NavBar user={user} setUser={setUser} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile} inputText={inputText} setInputText={setInputText} inputHandler={inputHandler} />
           <Routes>
             {/* <Route path="/" element={<ProfilePage/>} /> */}
             <Route path="/profiles" element={<ProfilePage profiles={user.Profiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>

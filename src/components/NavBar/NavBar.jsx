@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import * as userService from '../../utilities/users-service'
 
-export default function NavBar({ user, setUser, clickedProfile, inputHandler}) {
+export default function NavBar({ user, setUser, clickedProfile,setClickedProfile, inputHandler}) {
     
     // Add the following function
     function handleLogOut() {
         // Delegate to the users-service
+        setClickedProfile("")
         userService.logOut()
         // Update state will also cause a re-render
         setUser(null)
