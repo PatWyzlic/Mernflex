@@ -48,3 +48,6 @@
     margin: 1vw;
   }
   
+  .tv-show:hover{
+    transform: scale(1.5);
+  }
