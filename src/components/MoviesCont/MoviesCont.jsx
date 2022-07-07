@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import MyVerticallyCenteredModal from "../Modal/Modal"
 import "./MoviesCont.css"
-
+import * as App from "../../pages/App/App"
 
 
 export default function MoviesCont({API_KEY, SetMovies, movies}){
