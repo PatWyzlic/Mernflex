@@ -8,5 +8,6 @@ router.get("/", profileCtrl.showProfiles)
 // POST /API/PROFILE CONTROLLER
 router.post("/",profileCtrl.createProfile)
 
+router.put("/manage/:id", profileCtrl.editProfile)
 
 module.exports = router

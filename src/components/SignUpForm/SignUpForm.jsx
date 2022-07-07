@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { useState } from 'react';
 import { signUp } from '../../utilities/users-service.js'
-
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp({setUser}) {
     const [formData, setFormData]= useState({
@@ -10,7 +10,7 @@ export default function SignUp({setUser}) {
         confirm: '',
         error: ''
     })
-    
+    let navigate = useNavigate();
     // The object passed to setState is merged with the current state object
    async function handleChange(evt){
         await setFormData({
@@ -35,6 +35,7 @@ export default function SignUp({setUser}) {
             const user = await signUp(formDataCopy)
             console.log("singupform user:", user)
             setUser(user)
+            navigate("/profiles", { replace: true });
         } catch {
             // If an error occurred
             setFormData({ error: 'Sign Up Failed - Try again'})
