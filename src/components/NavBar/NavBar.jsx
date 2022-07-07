@@ -1,8 +1,9 @@
 import './NavBar.css'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import * as userService from '../../utilities/users-service'
 
-export default function NavBar({ user, setUser, clickedProfile }) {
+export default function NavBar({ user, setUser, clickedProfile, inputHandler}) {
     
     // Add the following function
     function handleLogOut() {
@@ -11,7 +12,6 @@ export default function NavBar({ user, setUser, clickedProfile }) {
         // Update state will also cause a re-render
         setUser(null)
     }
-
 
     return(
 
@@ -37,8 +37,11 @@ export default function NavBar({ user, setUser, clickedProfile }) {
                     </li>
                 </ul>
                     <form class="form-inline nav-form my-2 my-lg-0 mr-auto">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <input 
+                        class="form-control mr-sm-2" 
+                        type="search" placeholder="Search" aria-label="Search" label="Search"
+                        onInput={inputHandler}>
+                        </input>
                     </form>
                     <ul class="navbar-nav mr-auto ">
                     <li class="nav-item"> <Link className="nav-link" to="" onClick={handleLogOut}>Log Out</Link></li>
