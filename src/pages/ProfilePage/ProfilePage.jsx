@@ -10,11 +10,10 @@ const propic4 = require("../../images/profile-icon4.png")
 const propic5 = require("../../images/profile-icon5.png")
 const propic6 = require("../../images/profile-icon6.png")
 
-export default function ProfilePage({profiles, clickedProfile, setClickedProfile}) {
+export default function ProfilePage({profiles,setProfiles, clickedProfile, setClickedProfile}) {
     const [visible, setVisible] = useState(false)
-    const [profilesTry, setProfilesTry] = useState([])
-    console.log(profilesTry)
-    const [profileList, setProfileList] = useState([])
+    // const [profilesTry, setProfilesTry] = useState([])
+    // const [profileList, setProfileList] = useState([])
     const [profile, setProfile] = useState({
         ProfileName: ''
       });
@@ -35,6 +34,8 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
         try {
             const newProfile = await ProfileAPI.createProfile(profile);
             setProfile(newProfile);
+            setProfiles([...profiles, profile])
+            setProfile("")
         } catch {
           setError('Profile creation failed');
         }
@@ -49,18 +50,18 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
 
       //// used for the original showprofiles  ////
     
-      useEffect(function(){
-          async function getTheProfiles(){
-          const profiles = await ProfileAPI.getProfiles();
-          console.log(profiles)
-          setProfilesTry(profiles) 
-        }
-        getTheProfiles()
-      },[])
+      // useEffect(function(){
+      //     async function getTheProfiles(){
+      //     const profiles = await ProfileAPI.getProfiles();
+      //     console.log(profiles)
+      //     setProfilesTry(profiles) 
+      //   }
+      //   getTheProfiles()
+      // },[])
 
-      useEffect(() => {
-        setProfileList(profiles)
-      }, [profiles]);
+      // useEffect(() => {
+      //   setProfileList([...profiles, profiles])
+      // },[]);
     
     return(
         <div class="profile-page">
