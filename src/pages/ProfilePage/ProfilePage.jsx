@@ -35,7 +35,11 @@ export default function ProfilePage({profiles,setProfiles, clickedProfile, setCl
             const newProfile = await ProfileAPI.createProfile(profile);
             setProfile(newProfile);
             setProfiles([...profiles, profile])
-            setProfile("")
+            setProfile({
+              ProfileName : "",
+              ProfileImg : ""
+            }
+            )
         } catch {
           setError('Profile creation failed');
         }
