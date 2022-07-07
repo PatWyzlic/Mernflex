@@ -45,7 +45,7 @@ export default function FeaturedMovie({API_KEY}){
                 allow="autoplay"
                 title="YouTube video player"
                 frameborder="0"
-                allowfullscreen
+                allowFullScreen
                 ></iframe>
         <div className="feraturedinfo">
             <h2>{featuredFilm.title}</h2>

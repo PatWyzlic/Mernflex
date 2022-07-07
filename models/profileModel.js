@@ -6,9 +6,8 @@ const WatchListSchema = new Schema({
     Title: String,
     Description: String, 
     MovieDbId: Number,
-    Cast: Number,
     PosterPath: String,
-    Genres: Array,
+    Genres: String,
     ReleaseDate: String,
     Popularity: Number
 })
