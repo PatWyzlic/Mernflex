@@ -1,8 +1,9 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import "./Modal.css"
 import genres from "../genres"
+import * as WatchListAPI from "../../utilities/watchList-api"
 
 export default function MyVerticallyCenteredModal(props) {
   const arr = props.clickedmovie.genre_ids
@@ -16,6 +17,7 @@ export default function MyVerticallyCenteredModal(props) {
       ReleaseDate: "",
       Popularity: 0
     })
+    const [error, setError] = useState('');
 
 
     async function getgenres(){
@@ -32,9 +34,8 @@ export default function MyVerticallyCenteredModal(props) {
     getgenres()
     const genreNamesList = genreNames.toString()
 
-    async function handleSubmit(evt){
-      evt.preventDefault()
-      await setWatchListMovie(
+    useEffect(() => {
+      setWatchListMovie(
         {Title: props.clickedmovie.title,
         Description: props.clickedmovie.overview, 
         MovieDbId: props.clickedmovie.id,
@@ -43,6 +44,18 @@ export default function MyVerticallyCenteredModal(props) {
         ReleaseDate: props.clickedmovie.release_date,
         Popularity: props.clickedmovie.popularity}
       )
+    },[props.clickedmovie]);
+
+    async function handleSubmit(evt){
+      evt.preventDefault()
+      try{
+        const newwatchlistitem = await WatchListAPI.createWatchListItem()
+        console.log('newwatchlistitem', newwatchlistitem)
+        setWatchListMovie(newwatchlistitem)
+      } catch {
+        setError("WATCHLIST ITEM CREATION FAILED")
+      }
+
     }
     console.log(watchListMovie)
     

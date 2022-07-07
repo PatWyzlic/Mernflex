@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import "./ProfilePage.css"
+import "../ProfilePage/ProfilePage.css"
 import * as ProfileAPI from "../../utilities/profiles-api";
 import { Link } from 'react-router-dom'
 
@@ -82,7 +82,7 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
                 randomimg()
             return <div className="profile-cont">
                       {/* <div class="profile-icon"></div> */}
-                      <Link to="/movies"><img className = "profile-icon" src={images[ran]} alt="" onClick={() => handleClick(profile)}/></Link>
+                      <Link to={`/profiles/manage/${profile._id}`}><img className = "profile-icon" src={images[ran]} alt="" onClick={() => handleClick(profile)}/></Link>
                       <h4>{profile.ProfileName}</h4>
                   </div>
           })}
@@ -106,6 +106,5 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
         </div>
             <Link className="manage-btn" to="/profiles/manage" profiles={profiles}><button>Manage Profiles</button></Link>
         </div>
-        
     );
   }
