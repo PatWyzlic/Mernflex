@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import * as App from "../../pages/App/App"
 import MyVerticallyCenteredModal from "../Modal/Modaltv";
+import "../TVShowsCont/TVShowsCont.css"
 
 
 export default function TVShowsGenreRows({ API_KEY, genreId, genreName}){
