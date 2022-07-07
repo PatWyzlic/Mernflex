@@ -63,8 +63,21 @@ function createProfile(req, res){
     }
 }
 
+function editProfile(req, res){
+    try{
+        Profile.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        console.log(req.params.id)
+        .then((data) => {
+            res.json(data)
+        })
+    }catch{
+        console.log(error)
+    }
+}
+
 
 module.exports = {
     createProfile,
-    showProfiles
+    showProfiles,
+    editProfile
 }
