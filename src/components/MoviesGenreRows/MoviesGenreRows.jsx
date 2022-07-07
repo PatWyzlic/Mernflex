@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import * as App from "../../pages/App/App"
 
 
 export default function MoviesGenreRows({ API_KEY, genreId, genreName }){
@@ -19,7 +20,8 @@ export default function MoviesGenreRows({ API_KEY, genreId, genreName }){
   useEffect(() => {
     getMovies(mainUrl);
   }, []);
-
+    
+  if(App.newestInputFunction() === ""){
     return(
         <>
       <h4 className="row-Title">{genreName}</h4>
@@ -38,4 +40,22 @@ export default function MoviesGenreRows({ API_KEY, genreId, genreName }){
       </div>
     </>
     )
+  }else{
+    return(
+      <>
+        {movies.map((movie) => {
+          const theMovie = movie.title.toLowerCase().split(' ').join('')
+          if(theMovie.includes(App.newestInputFunction())){
+          return (
+              <img
+                className="movie"
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt=""
+              />
+          );
+          }
+        })}
+      </>
+  )
+  }
 }
