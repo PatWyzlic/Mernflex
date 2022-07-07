@@ -51,7 +51,6 @@ export default function MoviesCont({API_KEY, SetMovies, movies}){
           </div>
           })}
         </div>
-        )
       </>
   }else{
     <>
