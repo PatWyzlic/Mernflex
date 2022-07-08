@@ -39,6 +39,6 @@ app.get('/*', function (req, res) {
 // development to avoid collision with React's dev server
 const port = process.env.PORT || 'mongodb://localhost:27017/mernflex'; 
 
-app.listen(port, function () {
+app.listen(port, () => {
     console.log(`Express app running on port ${port}`)
 });
