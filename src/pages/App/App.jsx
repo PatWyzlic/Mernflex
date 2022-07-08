@@ -12,6 +12,13 @@ import HomePage from "../HomePage/HomePage"
 import ManageProfile from "../ManageProfile/ManageProfile"
 import EditProfile from '../EditProfile/EditProfile';
 
+let newestInput = "";
+
+export function newestInputFunction(){
+  let theNewInput = newestInput
+  return theNewInput
+}
+
 export default function App() {
   const [user, setUser] = useState(getUser())
   const [profiles, setProfiles] = useState()
@@ -19,6 +26,16 @@ export default function App() {
   // console.log("user:",user.user.Profiles)
   const [clickedProfile, setClickedProfile] = useState("")
   const [listName, setListName] = useState("")
+
+  const [inputText, setInputText] = useState("");
+
+    let inputHandler = (e) => {
+        //convert input text to lower case
+        let lowerCase = e.target.value.toLowerCase().split(' ').join('');
+        console.log(lowerCase)
+        newestInput = lowerCase
+        setInputText(lowerCase);
+    };
 
   return (
     <main className="App">
@@ -33,7 +50,7 @@ export default function App() {
             
             <Route path="/home" element={<HomePage/>} />
             <Route path="/movies" element={<MoviePage/>} />
-            <Route path="/tvshows" element={<TVShowPage/>} />
+            <Route path="/tvshows" element={<TVShowPage currentText={inputHandler}/>} />
             {/* <Route path="/orders/new" element={<NewOrderPage />} />
             <Route path="/orders" element={<OrderHistoryPage />} /> */}
             <Route path="/watchlistpage" element={<WatchListPage listName={setListName}/>} />

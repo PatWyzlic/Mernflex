@@ -19,13 +19,14 @@ app.use(express.static(path.join(__dirname, 'build')));
 // Middleware to verify token and assign user object of payload to req.user.
 // Be sure to mount before routes
 app.use(require('./config/checkToken'));
-
+const cors = require('cors');  
+app.use(cors());
 
 // Put API routes here, before the "catch all" route
 const ensureLoggedIn = require('./config/ensureLoggedIn');
 app.use('/api/users', require('./routes/api/users'))
 app.use('/profiles', require('./routes/api/profiles'))
-// app.use('/watchlist', require('./routes/api/watchlist'))
+// app.use('/watchlist', require('./routes/api/watchMONGODB_URIlist'))
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
@@ -36,8 +37,8 @@ app.get('/*', function (req, res) {
 
 // Configure to use port 3001 instead of 3000 during
 // development to avoid collision with React's dev server
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 'mongodb://localhost:27017/mernflex'; 
 
-app.listen(port, function () {
+app.listen(port, () => {
     console.log(`Express app running on port ${port}`)
 });

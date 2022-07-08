@@ -1,7 +1,6 @@
 import { Component } from 'react'
 import { useState } from 'react';
 import { signUp } from '../../utilities/users-service.js'
-
 import { useNavigate } from 'react-router-dom';
 
 export default function SignUp({setUser}) {
@@ -11,7 +10,6 @@ export default function SignUp({setUser}) {
         confirm: '',
         error: ''
     })
-
     let navigate = useNavigate();
     // The object passed to setState is merged with the current state object
    async function handleChange(evt){

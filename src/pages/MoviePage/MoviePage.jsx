@@ -16,8 +16,8 @@ export default function IndexPage(){
 
     return(
       <div className="Index">
-      <FeaturedMovie API_KEY={API_KEY} />
       <MoviesCont API_KEY={API_KEY} movies={movies} SetMovies={SetMovies} />
+      <FeaturedMovie API_KEY={API_KEY} />
       <MoviesGenreRows
         API_KEY={API_KEY}
         movies={movies}
