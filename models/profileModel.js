@@ -15,7 +15,7 @@ const WatchListSchema = new Schema({
 //Make Profile Schema
 const ProfileSchema = new Schema ({
     ProfileName: String,
-    ProfileImg: Number,
+    ProfileImg: Number, 
     Maturity: {
         type:Boolean, 
         default: true,

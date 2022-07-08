@@ -2,6 +2,10 @@ import './NavBar.css'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import * as userService from '../../utilities/users-service'
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3d22066c1a7322d8c8f83ce78c0196c5561c679e
 export default function NavBar({ user, setUser, clickedProfile,setClickedProfile, inputHandler}) {
     
     // Add the following function
