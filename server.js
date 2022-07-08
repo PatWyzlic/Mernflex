@@ -21,7 +21,6 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use(require('./config/checkToken'));
 const cors = require('cors');  
 app.use(cors());
-module.exports = function(app) {  app.use(    createProxyMiddleware(["/api", , "/otherApi"], { target: "http://localhost:3001" })  );};
 
 // Put API routes here, before the "catch all" route
 const ensureLoggedIn = require('./config/ensureLoggedIn');
