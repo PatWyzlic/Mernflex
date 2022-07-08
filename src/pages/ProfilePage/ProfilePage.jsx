@@ -10,11 +10,11 @@ const propic4 = require("../../images/profile-icon4.png")
 const propic5 = require("../../images/profile-icon5.png")
 const propic6 = require("../../images/profile-icon6.png")
 
-export default function ProfilePage({profiles, clickedProfile, setClickedProfile}) {
+export default function ProfilePage({profiles, setProfiles, clickedProfile, setClickedProfile}) {
     const [visible, setVisible] = useState(false)
     const [profilesTry, setProfilesTry] = useState([])
-    console.log(profilesTry)
-    const [profileList, setProfileList] = useState([])
+    console.log("profiles:",profiles)
+    const [profileList, setProfileList] = useState(profiles)
     const [profile, setProfile] = useState({
         ProfileName: ''
       });
@@ -22,20 +22,7 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
 
       const images = [propic1,propic2,propic3,propic4,propic5,propic6]
       
-
-      let ran
-      function randomimg (){
-       ran = Math.floor(Math.random() * images.length)
-       return ran
-      }
-    
       function handleChange(evt) {
-
-        const newProfile= {
-          imgClr: randomimg(),
-          [evt.target.name]: evt.target.value
-        }
-        console.log(newProfile)
 
         setProfile({ ...profile, [evt.target.name]: evt.target.value });
         setError('');
@@ -47,6 +34,12 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
         try {
             const newProfile = await ProfileAPI.createProfile(profile);
             setProfile(newProfile);
+            setProfileList([...profileList, profile])
+            setProfile({
+              ProfileName : "",
+              ProfileImg : ""
+            })
+            setVisible(false)
         } catch {
           setError('Profile creation failed');
         }
@@ -61,28 +54,27 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
 
       //// used for the original showprofiles  ////
     
-      useEffect(function(){
-          async function getTheProfiles(){
-          const profiles = await ProfileAPI.getProfiles();
-          console.log(profiles)
-          setProfilesTry(profiles) 
-        }
-        getTheProfiles()
-      },[])
+      // useEffect(function(){
+      //     async function getTheProfiles(){
+      //     const profiles = await ProfileAPI.getProfiles();
+      //     console.log(profiles)
+      //     setProfilesTry(profiles) 
+      //   }
+      //   getTheProfiles()
+      // },[])
 
       useEffect(() => {
         setProfileList(profiles)
-      }, [profiles]);
+      },[]);
     
     return(
         <div class="profile-page">
             <h1>Who's Watching?</h1>
             <div className="profiles">
-              {profiles.map((profile) => {
-                randomimg()
+              {profileList.map((profile) => {
             return <div className="profile-cont">
                       {/* <div class="profile-icon"></div> */}
-                      <Link to="/movies"><img className = "profile-icon" src={images[ran]} alt="" onClick={() => handleClick(profile)}/></Link>
+                      <Link to="/movies"><img className = "profile-icon" src={images[profile.ProfileImg]} alt="" onClick={() => handleClick(profile)}/></Link>
                       <h4>{profile.ProfileName}</h4>
                   </div>
           })}
@@ -97,6 +89,15 @@ export default function ProfilePage({profiles, clickedProfile, setClickedProfile
                             value={profile.ProfileName}
                             onChange={handleChange}>
                             </input>
+                            <label>Profile Pic</label>
+                            <select name="ProfileImg" size="3" onChange={handleChange}>
+                              <option value="0">Blue</option>
+                              <option value="1">Yellow</option>
+                              <option value="2">Red</option>
+                              <option value="3">Dark Blue</option>
+                              <option value="4">Purple</option>
+                              <option value="5">Green</option>
+                            </select>
                             {/* <input type="checkbox" value="autoPlay"></input> */}
                             <input type="submit" className="hover"></input>
                         </form>

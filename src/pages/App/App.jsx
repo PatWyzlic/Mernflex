@@ -14,7 +14,9 @@ import EditProfile from '../EditProfile/EditProfile';
 
 export default function App() {
   const [user, setUser] = useState(getUser())
+  const [profiles, setProfiles] = useState()
   console.log("app.js User:", user)
+  // console.log("user:",user.user.Profiles)
   const [clickedProfile, setClickedProfile] = useState("")
   const [listName, setListName] = useState("")
 
@@ -22,12 +24,12 @@ export default function App() {
     <main className="App">
       {user ?
       <>
-          <NavBar user={user} setUser={setUser} clickedProfile={clickedProfile} />
+          <NavBar user={user} setUser={setUser} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>
           <Routes>
             {/* <Route path="/" element={<ProfilePage/>} /> */}
-            <Route path="/profiles" element={<ProfilePage profiles={user.Profiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
-            <Route path="/profiles/manage" element={<ManageProfile profiles={user.Profiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
-            <Route path="/profiles/manage/:profileId" element={<EditProfile profiles={user.Profiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
+            <Route path="/profiles" element={<ProfilePage profiles={user.user.Profiles} setProfiles={setProfiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
+            <Route path="/profiles/manage" element={<ManageProfile profiles={user.user.Profiles} setProfiles={setProfiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
+            <Route path="/profiles/manage/:profileId" element={<EditProfile profiles={user.user.Profiles} setProfiles={setProfiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             
             <Route path="/home" element={<HomePage/>} />
             <Route path="/movies" element={<MoviePage/>} />
