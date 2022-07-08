@@ -47,5 +47,8 @@
       "last 1 safari version"
     ]
   },
+  "devServer": {
+    "allowedHosts": "all"
+  },
   "proxy": "http://localhost:3001"
 }
