@@ -18,7 +18,6 @@ export default function SignUp({setUser}) {
             error: ''
         });
     };
-
     async function handleSubmit(evt){
         evt.preventDefault()
         try {
@@ -41,7 +40,6 @@ export default function SignUp({setUser}) {
             setFormData({ error: 'Sign Up Failed - Try again'})
         }
     }
-
         const disable = formData.password !== formData.confirm;
         return (
             <div className='highest-cont'>

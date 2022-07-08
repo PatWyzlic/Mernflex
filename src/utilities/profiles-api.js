@@ -3,7 +3,6 @@ import sendRequestPut from "./sendRequest"
 
 const BASE_URL = "/profiles"
 
-
 //Show Profile
 export function getProfiles(){
     return sendRequest(BASE_URL)
@@ -15,8 +14,8 @@ export function createProfile(req) {
     )
 }
 
-// CREATE A PROFILE
+// Edit Profile
 export function editProfile(req, id) {
-    return sendRequestPut(`${BASE_URL}/manage/${id}`, "PUT", req
+    return sendRequest(`${BASE_URL}/manage/${id}`, "PUT", req
     )
 }

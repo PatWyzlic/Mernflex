@@ -2,25 +2,26 @@ import './NavBar.css'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import * as userService from '../../utilities/users-service'
+<<<<<<< HEAD
+=======
 
-export default function NavBar({ user, setUser, clickedProfile, inputHandler}) {
+>>>>>>> 3d22066c1a7322d8c8f83ce78c0196c5561c679e
+export default function NavBar({ user, setUser, clickedProfile,setClickedProfile, inputHandler}) {
     
     // Add the following function
     function handleLogOut() {
         // Delegate to the users-service
+        setClickedProfile("")
         userService.logOut()
         // Update state will also cause a re-render
         setUser(null)
     }
-
     return(
-
         <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="#">Mernflex</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -52,23 +53,4 @@ export default function NavBar({ user, setUser, clickedProfile, inputHandler}) {
             </div>
         </nav>
 )
-}
-
-
-
-
-{/* 
-        // <nav>
-        //     <Link to="/">Home</Link>
-        //     &nbsp; | &nbsp;
-        //     <Link to="/TvShows">Tv Shows</Link>
-        //     &nbsp; | &nbsp;
-        //     <Link to="/Movies">Movies</Link>
-        //     &nbsp; | &nbsp;
-        //     <Link to="/WatchList">WatchList</Link>
-        //     &nbsp; | &nbsp;
-        //     Welcome, { user.username }
-        //     &nbsp; | &nbsp;
-        //     <Link to="" onClick={handleLogOut}>Log Out</Link>
-        // </nav>
-    ) */}
+    }

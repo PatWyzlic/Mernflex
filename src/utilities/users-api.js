@@ -23,8 +23,9 @@ export default async function sendRequest(url, method = 'GET', payload = null) {
         options.headers = { 'Content-Type': 'application/json' }
         options.body = JSON.stringify(payload)
     }
-    console.log(payload)
+    console.log("options:", options)
     const token = getToken()
+    console.log("token in sendRequest:", token)
     if (token) {
         // Ensure the headers object exists
         options.headers = options.headers || {};

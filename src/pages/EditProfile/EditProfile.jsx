@@ -31,11 +31,8 @@ export default function EditProfile(props){
         <>
         <h1> Edit {props.clickedProfile.ProfileName}</h1>
         <div>
-            <form onSubmit={handleSubmit} >
-                <input type="text" 
-                placeholder={props.clickedProfile.ProfileName} 
-                value={props.clickedProfile.ProfileName} 
-                onChange={handleChange}
+        <form onSubmit={handleSubmit}>
+                <input type="text" placeholder={props.clickedProfile.ProfileName} value={profileName} onChange={handleChange}
                 name="ProfileName"/>
                 <input type="submit" />
             </form>
