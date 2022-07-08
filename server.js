@@ -37,7 +37,7 @@ app.get('/*', function (req, res) {
 
 // Configure to use port 3001 instead of 3000 during
 // development to avoid collision with React's dev server
-const port = process.env.PORT || '0.0.0.0/0'; 
+const port = process.env.PORT || 'mongodb://localhost:27017/mernflex'; 
 
 app.listen(port, function () {
     console.log(`Express app running on port ${port}`)
