@@ -36,7 +36,6 @@ export default function LoginForm({ setUser, user}) {
 
   return (
     <div className='highest-cont'>
-      <h1>HELLLLO</h1>
       <div className="form-container" onSubmit={handleSubmit}>
         <form className="form login-form" autoComplete="off" >
           <input type="text" name="username" placeholder='Username' value={credentials.username} onChange={handleChange} required />
