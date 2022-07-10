@@ -26,7 +26,7 @@ app.use(express.json())
 const ensureLoggedIn = require('./config/ensureLoggedIn');
 app.use('/api/users', require('./routes/api/users'))
 app.use('/profiles', require('./routes/api/profiles'))
-// app.use('/watchlist', require('./routes/api/watchlist'))
+app.use('/watchlist', require('./routes/api/watchlist'))
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
