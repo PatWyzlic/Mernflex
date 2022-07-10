@@ -11,12 +11,12 @@ const propic4 = require("../../images/profile-icon4.png")
 const propic5 = require("../../images/profile-icon5.png")
 const propic6 = require("../../images/profile-icon6.png")
 
-export default function ProfilePage({user, profiles, clickedProfile, setClickedProfile}) {
+export default function ProfilePage({user, profiles, profileList, setProfileList ,clickedProfile, setClickedProfile}) {
   const [visible, setVisible] = useState(false)
   const [loggedinUser,setLoggedInUser] = useState("")
   const [profilesTry, setProfilesTry] = useState([])
   console.log("profiles:",profiles)
-  const [profileList, setProfileList] = useState(profiles)
+  // const [profileList, setProfileList] = useState(profiles)
   const [profile, setProfile] = useState({
       ProfileName: ''
     });
@@ -77,35 +77,24 @@ export default function ProfilePage({user, profiles, clickedProfile, setClickedP
     },[]);
   
     return(
+      <>
+      {profileList?
         <div class="profile-page">
             <h1>Manage a Profile!</h1>
             <div className="profiles">
-              {profiles.map((profile) => {
+              {profileList.map((profile) => {
             return <div className="profile-cont">
                       {/* <div class="profile-icon"></div> */}
                       <Link to={`/profiles/manage/${profile._id}`}><img className = "profile-icon" src={images[profile.ProfileImg]} alt="" onClick={() => handleClick(profile)}/></Link>
                       <h4>{profile.ProfileName}</h4>
                   </div>
           })}
-          <div className="profile-cont">
-            <a className="profile-icon create-profile text-standards hover" onClick={() => setVisible(!visible)}>{visible ? '-' : '+'}</a>
-                {visible && 
-                    <div>
-                        <form className="form" onSubmit={handleSubmit}>
-                            <input type="text"
-                            placeholder="Create Profile" 
-                            name="ProfileName" 
-                            value={profile.ProfileName}
-                            onChange={handleChange}>
-                            </input>
-                            {/* <input type="checkbox" value="autoPlay"></input> */}
-                            <input type="submit" className="hover"></input>
-                        </form>
-                    </div> }
-            <h4>Create Profile</h4>
-          </div>
         </div>
 
         </div>
+        :
+        <h1>Loading</h1>
+                }
+    </>
     );
   }

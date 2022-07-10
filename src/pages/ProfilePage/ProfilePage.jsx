@@ -12,12 +12,12 @@ const propic4 = require("../../images/profile-icon4.png")
 const propic5 = require("../../images/profile-icon5.png")
 const propic6 = require("../../images/profile-icon6.png")
 
-export default function ProfilePage({user, profiles, setProfiles, clickedProfile, setClickedProfile}) {
+export default function ProfilePage({user,appProfiles, profiles, setProfiles, profileList, setProfileList, clickedProfile, setClickedProfile}) {
     const [visible, setVisible] = useState(false)
     const [loggedinUser,setLoggedInUser] = useState("")
     const [profilesTry, setProfilesTry] = useState([])
     console.log("profiles:",profiles)
-    const [profileList, setProfileList] = useState(profiles)
+    // const [profileList, setProfileList] = useState(profiles)
     const [profile, setProfile] = useState({
         ProfileName: ''
       });
@@ -56,6 +56,7 @@ export default function ProfilePage({user, profiles, setProfiles, clickedProfile
         try {
             const newProfile = await ProfileAPI.createProfile(profile);
             setProfile(newProfile);
+            setProfiles(newProfile)
             setProfileList([...profileList, profile])
             setProfile({
               ProfileName : "",
@@ -71,12 +72,15 @@ export default function ProfilePage({user, profiles, setProfiles, clickedProfile
         await setClickedProfile(evt)
         console.log("clicked Profile:", clickedProfile)
       }
+
       useEffect(() => {
         setProfileList(profiles)
         getUser()
       },[]);
     
     return(
+      <>
+      {profileList ? 
         <div class="profile-page">
             <h1>{`Hello ${loggedinUser.username}`}</h1>
             <h1>Who is Watching?</h1>
@@ -117,5 +121,9 @@ export default function ProfilePage({user, profiles, setProfiles, clickedProfile
         </div>
             <Link className="manage-btn" to="/profiles/manage" profiles={profiles}><button>Manage Profiles</button></Link>
         </div>
+        :
+        <h1>Loading</h1>
+                }
+      </>
     );
   }
