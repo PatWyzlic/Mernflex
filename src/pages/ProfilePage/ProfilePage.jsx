@@ -71,20 +71,6 @@ export default function ProfilePage({user, profiles, setProfiles, clickedProfile
         await setClickedProfile(evt)
         console.log("clicked Profile:", clickedProfile)
       }
-
-      // console.log(profiles)
-
-      //// used for the original showprofiles  ////
-    
-      // useEffect(function(){
-      //     async function getTheProfiles(){
-      //     const profiles = await ProfileAPI.getProfiles();
-      //     console.log(profiles)
-      //     setProfilesTry(profiles) 
-      //   }
-      //   getTheProfiles()
-      // },[])
-
       useEffect(() => {
         setProfileList(profiles)
         getUser()
@@ -111,10 +97,10 @@ export default function ProfilePage({user, profiles, setProfiles, clickedProfile
                             placeholder="Create Profile" 
                             name="ProfileName" 
                             value={profile.ProfileName}
-                            onChange={handleChange}>
+                            onChange={handleChange} required>
                             </input>
                             <label>Profile Pic</label>
-                            <select name="ProfileImg" size="3" onChange={handleChange}>
+                            <select name="ProfileImg" size="3" onChange={handleChange} required>
                               <option value="0">Blue</option>
                               <option value="1">Yellow</option>
                               <option value="2">Red</option>
