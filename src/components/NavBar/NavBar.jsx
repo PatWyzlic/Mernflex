@@ -52,7 +52,7 @@ export default function NavBar({ user, setUser, clickedProfile,setClickedProfile
                     <ul class="navbar-nav mr-auto ">
                     <li class="nav-item"> <Link className="nav-link" to="" onClick={handleLogOut}>Log Out</Link></li>
                     <li class="nav-item">
-                        <Link className="nav-link" to="/profiles">
+                        <Link className="nav-link" to={`/profiles/${user.user._id}`}>
                         <div>
                         <img className = "nav-profile-icon" src={images[clickedProfile.ProfileImg]} alt="" ></img>
                         
