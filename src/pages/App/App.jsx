@@ -19,7 +19,6 @@ export function newestInputFunction(){
   return theNewInput
 }
 
-
 export default function App() {
   const [user, setUser] = useState(getUser())
   const [profiles, setProfiles] = useState()
@@ -44,7 +43,7 @@ export default function App() {
     <main className="App">
       {user ?
       <>
-          <NavBar user={user} setUser={setUser} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>
+          <NavBar user={user} setUser={setUser} clickedProfile={clickedProfile} inputText={inputText} setInputText={setInputText} inputHandler={inputHandler} />
           <Routes>
             {/* <Route path="/" element={<ProfilePage/>} /> */}
             <Route path="/profiles/:userid" element={<ProfilePage user={user} profiles={user.user.Profiles} setProfiles={setProfiles} profileList={profileList} setProfileList={setProfileList} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
@@ -52,10 +51,8 @@ export default function App() {
             <Route path="/profiles/manage/:profileId" element={<EditProfile user={user} profiles={user.user.Profiles} setProfiles={setProfiles} profileList={profileList} setProfileList={setProfileList} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             
             <Route path="/home" element={<HomePage/>} />
-            <Route path="/movies" element={<MoviePage currentText={inputHandler}/>} />
+            <Route path="/movies" element={<MoviePage/>} />
             <Route path="/tvshows" element={<TVShowPage/>} />
-            {/* <Route path="/orders/new" element={<NewOrderPage />} />
-            <Route path="/orders" element={<OrderHistoryPage />} /> */}
             <Route path="/watchlistpage" element={<WatchListPage listName={setListName}/>} />
           </Routes>
       </>
