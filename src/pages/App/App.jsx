@@ -5,7 +5,7 @@ import MoviePage from '../MoviePage/MoviePage';
 import { Routes, Route } from 'react-router-dom'
 import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-service';
-import WatchListPage from '../WatchListPage/WatchListPage';
+import WatchList from '../WatchList/WatchList';
 import ProfilePage from '../ProfilePage/ProfilePage'; 
 import TVShowPage from '../TVShowPage/TVShowPage';
 import HomePage from "../HomePage/HomePage"
@@ -24,7 +24,6 @@ export default function App() {
   const [user, setUser] = useState(getUser())
   const [profiles, setProfiles] = useState()
   console.log("app.js User:", user)
-  // console.log("user:",user.user.Profiles)
   const [clickedProfile, setClickedProfile] = useState("")
   const [listName, setListName] = useState("")
   const [profileList, setProfileList] = useState()
@@ -54,9 +53,7 @@ export default function App() {
             <Route path="/home" element={<HomePage/>} />
             <Route path="/movies" element={<MoviePage currentText={inputHandler}/>} />
             <Route path="/tvshows" element={<TVShowPage/>} />
-            {/* <Route path="/orders/new" element={<NewOrderPage />} />
-            <Route path="/orders" element={<OrderHistoryPage />} /> */}
-            <Route path="/watchlistpage" element={<WatchListPage listName={setListName}/>} />
+            <Route path="/watchlist" element={<WatchList listName={setListName}/>} />
           </Routes>
       </>
       :
