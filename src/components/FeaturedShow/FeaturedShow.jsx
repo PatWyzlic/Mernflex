@@ -1,6 +1,6 @@
 import "./FeaturedShow.css";
 import {useEffect, useState} from "react"
-import * as App from "../../pages/App/App"
+
 
 export default function FeaturedTVShow({API_KEY}){
 
@@ -33,8 +33,8 @@ export default function FeaturedTVShow({API_KEY}){
     }, []);
   
 
-    if(App.newestInputFunction() === ""){
-        return (<div className="featuredFilmCont">
+    return(
+        <div className="featuredFilmCont">
             <iframe
                 className="video"
                 width="800"
@@ -49,6 +49,6 @@ export default function FeaturedTVShow({API_KEY}){
             <h2>{featuredTVShow.title}</h2>
             <p>{featuredTVShow.overview}</p>
         </div>
-        </div>)
-    }
+        </div>
+    )
 }

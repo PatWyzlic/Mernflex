@@ -2,10 +2,15 @@ import './NavBar.css'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import * as userService from '../../utilities/users-service'
-<<<<<<< HEAD
-=======
+const propic1 = require("../../images/profile-icon1.png")
+const propic2 = require("../../images/profile-icon2.png")
+const propic3 = require("../../images/profile-icon3.png")
+const propic4 = require("../../images/profile-icon4.png")
+const propic5 = require("../../images/profile-icon5.png")
+const propic6 = require("../../images/profile-icon6.png")
 
->>>>>>> 3d22066c1a7322d8c8f83ce78c0196c5561c679e
+const images = [propic1,propic2,propic3,propic4,propic5,propic6]
+
 export default function NavBar({ user, setUser, clickedProfile,setClickedProfile, inputHandler}) {
     
     // Add the following function
@@ -47,7 +52,12 @@ export default function NavBar({ user, setUser, clickedProfile,setClickedProfile
                     <ul class="navbar-nav mr-auto ">
                     <li class="nav-item"> <Link className="nav-link" to="" onClick={handleLogOut}>Log Out</Link></li>
                     <li class="nav-item">
-                        <Link className="nav-link" to="/profiles">{clickedProfile.ProfileName}</Link>
+                        <Link className="nav-link" to="/profiles">
+                        <div>
+                        <img className = "nav-profile-icon" src={images[clickedProfile.ProfileImg]} alt="" ></img>
+                        
+                        {clickedProfile.ProfileName}
+                        </div></Link>
                     </li>
                     </ul>
             </div>

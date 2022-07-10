@@ -20,12 +20,14 @@ export function checkToken() {
 export default async function sendRequest(url, method = 'GET', payload = null) {
     const options = { method }
     if (payload) {
-        options.headers = { 'Content-Type': 'application/json' }
+        options.headers = { 
+            'Content-Type': 'application/json' }
         options.body = JSON.stringify(payload)
     }
-    console.log("options:", options)
+    console.log("payload:", payload)
+    console.log(url)
     const token = getToken()
-    console.log("token in sendRequest:", token)
+    // console.log("token in sendRequest:", token)
     if (token) {
         // Ensure the headers object exists
         options.headers = options.headers || {};
@@ -33,9 +35,10 @@ export default async function sendRequest(url, method = 'GET', payload = null) {
         // Prefacing with 'Bearer' is recommended in the HTTP specification
         options.headers.Authorization = `Bearer ${token}`;
     }
-    const res = await fetch(url, options)
     console.log("options:", options)
+    const res = await fetch(url, options)
     console.log(res)
+    // console.log("options:", options)
     // res.ok will be false if the status code set to 4xx in the controller action
     if (res.ok) return res.json()
     throw new Error('Bad Request')

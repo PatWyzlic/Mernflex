@@ -1,6 +1,8 @@
 import "./FeaturedMovie.css";
 import {useEffect, useState} from "react"
-import * as App from "../../pages/App/App"
+
+
+
 
 export default function FeaturedMovie({API_KEY}){
 
@@ -32,8 +34,9 @@ export default function FeaturedMovie({API_KEY}){
       getFeaturedFilm(URL_Featured)
     }, []);
   
-      {if( App.newestInputFunction() === ""){
-        return (<div className="featuredFilmCont">
+
+    return(
+        <div className="featuredFilmCont">
             <iframe
                 className="video"
                 width="800"
@@ -44,11 +47,10 @@ export default function FeaturedMovie({API_KEY}){
                 frameborder="0"
                 allowFullScreen
                 ></iframe>
-          <div className="feraturedinfo">
-              <h2>{featuredFilm.title}</h2>
-              <p>{featuredFilm.overview}</p>
-          </div>
+        <div className="feraturedinfo">
+            <h2>{featuredFilm.title}</h2>
+            <p>{featuredFilm.overview}</p>
         </div>
-        )}
-      }
+        </div>
+    )
 }
