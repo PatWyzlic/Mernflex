@@ -11,6 +11,7 @@ import TVShowPage from '../TVShowPage/TVShowPage';
 import HomePage from "../HomePage/HomePage"
 import ManageProfile from "../ManageProfile/ManageProfile"
 import EditProfile from '../EditProfile/EditProfile';
+import userEvent from '@testing-library/user-event';
 
 let newestInput = "";
 
@@ -48,7 +49,7 @@ export default function App() {
             {/* <Route path="/" element={<ProfilePage/>} /> */}
             <Route path="/profiles/:userid" element={<ProfilePage user={user} profiles={user.user.Profiles} setProfiles={setProfiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             <Route path="/profiles/manage" element={<ManageProfile user={user} profiles={user.user.Profiles} setProfiles={setProfiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
-            <Route path="/profiles/manage/:profileId" element={<EditProfile profiles={user.user.Profiles} setProfiles={setProfiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
+            <Route path="/profiles/manage/:profileId" element={<EditProfile user={user} profiles={user.user.Profiles} setProfiles={setProfiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             
             <Route path="/home" element={<HomePage/>} />
             <Route path="/movies" element={<MoviePage currentText={inputHandler}/>} />
