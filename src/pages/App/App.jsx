@@ -26,6 +26,7 @@ export default function App() {
   // console.log("user:",user.user.Profiles)
   const [clickedProfile, setClickedProfile] = useState("")
   const [listName, setListName] = useState("")
+  const [profileList, setProfileList] = useState()
 
   const [inputText, setInputText] = useState("");
 
@@ -45,9 +46,9 @@ export default function App() {
           <NavBar user={user} setUser={setUser} clickedProfile={clickedProfile} inputText={inputText} setInputText={setInputText} inputHandler={inputHandler} />
           <Routes>
             {/* <Route path="/" element={<ProfilePage/>} /> */}
-            <Route path="/profiles" element={<ProfilePage profiles={user.user.Profiles} setProfiles={setProfiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
-            <Route path="/profiles/manage" element={<ManageProfile profiles={user.user.Profiles} setProfiles={setProfiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
-            <Route path="/profiles/manage/:profileId" element={<EditProfile profiles={user.user.Profiles} setProfiles={setProfiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
+            <Route path="/profiles/:userid" element={<ProfilePage user={user} profiles={user.user.Profiles} setProfiles={setProfiles} profileList={profileList} setProfileList={setProfileList} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
+            <Route path="/profiles/manage" element={<ManageProfile user={user} profiles={user.user.Profiles} setProfiles={setProfiles} profileList={profileList} setProfileList={setProfileList} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
+            <Route path="/profiles/manage/:profileId" element={<EditProfile user={user} profiles={user.user.Profiles} setProfiles={setProfiles} profileList={profileList} setProfileList={setProfileList} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             
             <Route path="/home" element={<HomePage/>} />
             <Route path="/movies" element={<MoviePage/>} />
@@ -56,7 +57,7 @@ export default function App() {
           </Routes>
       </>
       :
-      <AuthPage setUser={setUser} />}
+      <AuthPage user={user} setUser={setUser} />}
     </main>
   );
 }

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react"
 import "./ProfilePage.css"
 import * as ProfileAPI from "../../utilities/profiles-api";
 import { Link } from 'react-router-dom'
+import axios from "axios"
+import { getToken } from '../../utilities/users-service'
 
 const propic1 = require("../../images/profile-icon1.png")
 const propic2 = require("../../images/profile-icon2.png")
@@ -10,11 +12,12 @@ const propic4 = require("../../images/profile-icon4.png")
 const propic5 = require("../../images/profile-icon5.png")
 const propic6 = require("../../images/profile-icon6.png")
 
-export default function ProfilePage({profiles, setProfiles, clickedProfile, setClickedProfile}) {
+export default function ProfilePage({user,appProfiles, profiles, setProfiles, profileList, setProfileList, clickedProfile, setClickedProfile}) {
     const [visible, setVisible] = useState(false)
+    const [loggedinUser,setLoggedInUser] = useState("")
     const [profilesTry, setProfilesTry] = useState([])
     console.log("profiles:",profiles)
-    const [profileList, setProfileList] = useState(profiles)
+    // const [profileList, setProfileList] = useState(profiles)
     const [profile, setProfile] = useState({
         ProfileName: ''
       });
@@ -22,6 +25,25 @@ export default function ProfilePage({profiles, setProfiles, clickedProfile, setC
 
       const images = [propic1,propic2,propic3,propic4,propic5,propic6]
       
+      console.log('profilePage User:', user.user)
+
+    function getUser() {
+      axios({
+          headers:{
+            'Accept':'application/json',
+            'Content-Type': 'application/json',
+          },
+          url: `/profiles/${user.user._id}`,
+          method: "GET",
+      })
+        .then((response) => {
+            const data = response.data
+            console.log(response.data)
+            setLoggedInUser(data)
+            console.log(loggedinUser) 
+        })
+      }
+
       function handleChange(evt) {
 
         setProfile({ ...profile, [evt.target.name]: evt.target.value });
@@ -34,6 +56,7 @@ export default function ProfilePage({profiles, setProfiles, clickedProfile, setC
         try {
             const newProfile = await ProfileAPI.createProfile(profile);
             setProfile(newProfile);
+            setProfiles(newProfile)
             setProfileList([...profileList, profile])
             setProfile({
               ProfileName : "",
@@ -50,31 +73,22 @@ export default function ProfilePage({profiles, setProfiles, clickedProfile, setC
         console.log("clicked Profile:", clickedProfile)
       }
 
-      // console.log(profiles)
-
-      //// used for the original showprofiles  ////
-    
-      // useEffect(function(){
-      //     async function getTheProfiles(){
-      //     const profiles = await ProfileAPI.getProfiles();
-      //     console.log(profiles)
-      //     setProfilesTry(profiles) 
-      //   }
-      //   getTheProfiles()
-      // },[])
-
       useEffect(() => {
         setProfileList(profiles)
+        getUser()
       },[]);
     
     return(
+      <>
+      {profileList ? 
         <div class="profile-page">
-            <h1>Who's Watching?</h1>
+            <h1>{`Hello ${loggedinUser.username}`}</h1>
+            <h1>Who is Watching?</h1>
             <div className="profiles">
               {profileList.map((profile) => {
             return <div className="profile-cont">
                       {/* <div class="profile-icon"></div> */}
-                      <Link to="/movies"><img className = "profile-icon" src={images[profile.ProfileImg]} alt="" onClick={() => handleClick(profile)}/></Link>
+                      <Link to={`/home`}><img className = "profile-icon" src={images[profile.ProfileImg]} alt="" onClick={() => handleClick(profile)}/></Link>
                       <h4>{profile.ProfileName}</h4>
                   </div>
           })}
@@ -87,10 +101,10 @@ export default function ProfilePage({profiles, setProfiles, clickedProfile, setC
                             placeholder="Create Profile" 
                             name="ProfileName" 
                             value={profile.ProfileName}
-                            onChange={handleChange}>
+                            onChange={handleChange} required>
                             </input>
                             <label>Profile Pic</label>
-                            <select name="ProfileImg" size="3" onChange={handleChange}>
+                            <select name="ProfileImg" size="3" onChange={handleChange} required>
                               <option value="0">Blue</option>
                               <option value="1">Yellow</option>
                               <option value="2">Red</option>
@@ -107,6 +121,9 @@ export default function ProfilePage({profiles, setProfiles, clickedProfile, setC
         </div>
             <Link className="manage-btn" to="/profiles/manage" profiles={profiles}><button>Manage Profiles</button></Link>
         </div>
-        
+        :
+        <h1>Loading</h1>
+                }
+      </>
     );
   }

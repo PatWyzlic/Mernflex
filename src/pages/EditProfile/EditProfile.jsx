@@ -1,11 +1,13 @@
 import "./EditProfile.css"
 import {useState} from "react"
 import {editProfile,deleteProfile} from "../../utilities/profiles-api"
-import {useParams} from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 import axios from "axios"
 
 
 export default function EditProfile(props){
+
+    const navigate = useNavigate()
     
     const [profileName, setProfileName] = useState({
         name: "",
@@ -27,7 +29,10 @@ export default function EditProfile(props){
             method: "PUT",
             data: data
         })
-          .then((response) => console.log(response))
+          .then((response) => {
+            console.log(response)
+            navigate(`/profiles/${props.user.user._id}`)
+        })
         }
     
 
@@ -46,12 +51,16 @@ export default function EditProfile(props){
         }
     }
 
-    function deleteProfileApi() {
+    function deleteProfileApi(evt) {
+        evt.preventDefault()
         axios({
             url: `http://localhost:3000/profiles/manage/${id}`,
             method: "DELETE",
         })
-          .then((response) => console.log(response))
+          .then((response) => {
+            navigate(`/profiles/${props.user.user._id}`)
+            console.log(response)
+        })
         }
     
     return(
@@ -63,14 +72,14 @@ export default function EditProfile(props){
                 name="name"/>
                 <input type="hidden" placeholder={props.clickedProfile._id} value={props.clickedProfile._id}
                 name="id"/>
-                <input type="submit" />
+                <input type="submit" class="button" value="Edit"/>
             </form>
         </div>
 
 
         <div>Delete
             <form onSubmit={deleteProfileApi}>
-                <input type="submit" />
+                <input type="submit" class="button" value="Delete"/>
             </form>
         </div>
         </>
