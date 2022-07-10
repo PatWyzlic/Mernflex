@@ -83,8 +83,31 @@ async function deleteProfile(req,res){
     }
 }
 
+function getUser(req,res){
+    console.log('getUser hit')
+    console.log(req.params.userid)
+    User.findById(req.params.userid)
+    .then(foundUser=>{
+        console.log("foundUser", foundUser)
+        console.log("foundUserprofiles", foundUser.Profiles)
+        res.json(foundUser)
+    })
+}
+
+// async function getUser(req,res){
+//     console.log('getUserHit')
+//     try{
+//         const founduser = User.findById(req.params.userid)
+//         res.json(founduser)
+//     } catch(err){
+//         console.log(err)
+//     }
+// }
+
+
 module.exports = {
     createProfile,
     editProfile,
-    deleteProfile
+    deleteProfile,
+    getUser
 } 

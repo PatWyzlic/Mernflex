@@ -46,7 +46,7 @@ export default function App() {
           <NavBar user={user} setUser={setUser} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>
           <Routes>
             {/* <Route path="/" element={<ProfilePage/>} /> */}
-            <Route path="/profiles" element={<ProfilePage profiles={user.user.Profiles} setProfiles={setProfiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
+            <Route path="/profiles/:userid" element={<ProfilePage user={user} profiles={user.user.Profiles} setProfiles={setProfiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             <Route path="/profiles/manage" element={<ManageProfile profiles={user.user.Profiles} setProfiles={setProfiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             <Route path="/profiles/manage/:profileId" element={<EditProfile profiles={user.user.Profiles} setProfiles={setProfiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             
@@ -59,7 +59,7 @@ export default function App() {
           </Routes>
       </>
       :
-      <AuthPage setUser={setUser} />}
+      <AuthPage user={user} setUser={setUser} />}
     </main>
   );
 }
