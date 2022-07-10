@@ -59,22 +59,32 @@ function createProfile(req, res){
     }
 }
 
-function editProfile(req, id){
+async function editProfile(req, res){
     console.log("EditProfile hit")
+    console.log(req.body)
     try{
-        Profile.findByIdAndUpdate(req.params._id, req.body, {new: true})
-        console.log(req.params.id)
-        .then((data) => {
-            res.json(data)
-        })
-        return Profile.save();
+        // const updatedProfile = await  Profile.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        // res.json(updatedProfile)
+        const profile = await Profile.findById(req.params.id)
+        profile.ProfileName = req.body.name
+        profile.save()
+        res.json(profile)
     }catch{
         console.log(error)
     }
 }
 
+async function deleteProfile(req,res){
+    try{
+        await Profile.findByIdAndRemove(req.params.id)
+        res.json({message: 'Profile Deleted'})
+    } catch (error){
+        console.log(error)
+    }
+}
 
 module.exports = {
     createProfile,
-    editProfile
+    editProfile,
+    deleteProfile
 } 
