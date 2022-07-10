@@ -88,7 +88,7 @@ export default function ProfilePage({user,appProfiles, profiles, setProfiles, pr
               {profileList.map((profile) => {
             return <div className="profile-cont">
                       {/* <div class="profile-icon"></div> */}
-                      <Link to="/movies"><img className = "profile-icon" src={images[profile.ProfileImg]} alt="" onClick={() => handleClick(profile)}/></Link>
+                      <Link to={`/home`}><img className = "profile-icon" src={images[profile.ProfileImg]} alt="" onClick={() => handleClick(profile)}/></Link>
                       <h4>{profile.ProfileName}</h4>
                   </div>
           })}
