@@ -27,7 +27,7 @@ async function create(req, res) {
         // Add the user to the datebase
         const user = await User.create(req.body)
         // token will be a string
-        const token = createJWT(user)
+        const token = await createJWT(user)
         // Yes, we can use res.json to send back just a string
         // The client code needs to take this into consideration
         res.json(token);
