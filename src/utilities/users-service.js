@@ -14,22 +14,22 @@ export async function signUp(userData) {
 
 export async function login(credentials) {
     const token = await usersAPI.login(credentials)
-    console.log("logintoken:", token)
+    // console.log("logintoken:", token)
     localStorage.setItem('token', token)
     return getUser()
 }
 
 export function getToken() {
-    console.log("getToken Ran")
+    // console.log("getToken Ran")
     // getItem return null if there's no string
     const token = localStorage.getItem('token')
-    console.log("getTokenTOken:", token)
+    // console.log("getTokenTOken:", token)
     if (!token) return null
     // Obtain the payload of the token
-    console.log("token did not return null")
+    // console.log("token did not return null")
     // const payload = JSON.parse(atob(token.split('.')[1]))
     const payload = jwt_decode(token)
-    console.log("getTokenPayload:", payload)
+    // console.log("getTokenPayload:", payload)
     // A JWT's exp is expressed in seconds, not milliseconds, so convert
     if (payload.exp < Date.now() / 1000) {
         // console.log("token expires:", Date.now() / 1000)
@@ -55,7 +55,7 @@ export function logOut() {
 
 export function checkToken() {
     // Just so that you don't forget how to use .then
-    console.log("check Token Ran")
+    // console.log("check Token Ran")
     return usersAPI.checkToken()
     // checkToken returns a string, but let's 
     // make it a Date object for more flexibility

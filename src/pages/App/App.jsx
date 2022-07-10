@@ -19,6 +19,7 @@ export function newestInputFunction(){
   return theNewInput
 }
 
+
 export default function App() {
   const [user, setUser] = useState(getUser())
   const [profiles, setProfiles] = useState()
@@ -37,6 +38,7 @@ export default function App() {
         setInputText(lowerCase);
     };
 
+
   return (
     <main className="App">
       {user ?
@@ -49,8 +51,8 @@ export default function App() {
             <Route path="/profiles/manage/:profileId" element={<EditProfile profiles={user.user.Profiles} setProfiles={setProfiles} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             
             <Route path="/home" element={<HomePage/>} />
-            <Route path="/movies" element={<MoviePage/>} />
-            <Route path="/tvshows" element={<TVShowPage currentText={inputHandler}/>} />
+            <Route path="/movies" element={<MoviePage currentText={inputHandler}/>} />
+            <Route path="/tvshows" element={<TVShowPage/>} />
             {/* <Route path="/orders/new" element={<NewOrderPage />} />
             <Route path="/orders" element={<OrderHistoryPage />} /> */}
             <Route path="/watchlistpage" element={<WatchListPage listName={setListName}/>} />

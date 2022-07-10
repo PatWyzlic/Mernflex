@@ -46,3 +46,9 @@ nav {
 .navbar-brand:hover{
     color: var(--Netflix-Red);
 }
+
+.nav-profile-icon{
+    width: 25px;
+    height: 25px;
+    margin-right: .5vw;
+}
