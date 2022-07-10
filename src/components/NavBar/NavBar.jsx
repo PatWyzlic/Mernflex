@@ -44,9 +44,11 @@ export default function NavBar({ user, setUser, clickedProfile,setClickedProfile
                 </ul>
                     <form class="form-inline nav-form my-2 my-lg-0 mr-auto">
                         <input 
-                        class="form-control mr-sm-2" 
-                        type="search" placeholder="Search" aria-label="Search" label="Search"
-                        onInput={inputHandler}>
+                            class="form-control mr-sm-2" 
+                            type="search" 
+                            placeholder="Search" aria-label="Search" 
+                            label="Search"
+                            onInput={inputHandler}>
                         </input>
                     </form>
                     <ul class="navbar-nav mr-auto ">
