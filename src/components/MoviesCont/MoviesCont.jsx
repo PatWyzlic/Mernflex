@@ -31,11 +31,12 @@ export default function MoviesCont({API_KEY, SetMovies, movies}){
   }
 
   if(App.newestInputFunction() === ""){
+    return(
         <>
         <h4 className="row-Title">Featured Films</h4>
         <div className="movie-row">
           {movies.map((movie) => {
-            return <div className="movie">
+            <div className="movie">
             <img
               className="movie"
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -52,23 +53,28 @@ export default function MoviesCont({API_KEY, SetMovies, movies}){
           })}
         </div>
       </>
+    )
   }else{
-    <>
-          {movies.map((movie) => {
-            return <>
-            <img
-              className="movie"
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt=""
-              onClick={() => clickedMovies(movie)}
-            />
-            <MyVerticallyCenteredModal
-            show={modalShow}
-            onHide={() => setModalShow(false)}
-            clickedmovie={clickedMovie}
+      return(
+      <>
+      {movies.map((movie) => {
+          const theMovie = movie.title.toLowerCase().split(' ').join('')
+          if(theMovie.includes(App.newestInputFunction())){
+          return <>
+          <img
+            className="movie"
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt=""
+            onClick={() => clickedMovies(movie)}
           />
+          <MyVerticallyCenteredModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          clickedmovie={clickedMovie}
+          API_KEY={API_KEY}
+        />
           </>
-          })}
-      </>
+        }})}
+        </>)
   }
 }
