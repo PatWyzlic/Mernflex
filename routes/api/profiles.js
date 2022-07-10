@@ -6,6 +6,8 @@ const profileCtrl = require("../../controllers/api/profileController")
 // POST /API/PROFILE CONTROLLER
 router.post("/",profileCtrl.createProfile)
 
+router.get("/:userid", profileCtrl.getUser)
+
 router.put("/manage/:id",profileCtrl.editProfile)
 
 router.delete("/manage/:id",profileCtrl.deleteProfile)
