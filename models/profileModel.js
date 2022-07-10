@@ -9,7 +9,8 @@ const WatchListSchema = new Schema({
     PosterPath: String,
     Genres: String,
     ReleaseDate: String,
-    Popularity: Number
+    Popularity: Number,
+    Current_Profile: String
 })
 
 //Make Profile Schema
