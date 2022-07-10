@@ -63,14 +63,14 @@ export default function EditProfile(props){
                 name="name"/>
                 <input type="hidden" placeholder={props.clickedProfile._id} value={props.clickedProfile._id}
                 name="id"/>
-                <input type="submit" />
+                <input type="submit" class="button" value="Edit"/>
             </form>
         </div>
 
 
         <div>Delete
             <form onSubmit={deleteProfileApi}>
-                <input type="submit" />
+                <input type="submit" class="button" value="Delete"/>
             </form>
         </div>
         </>
