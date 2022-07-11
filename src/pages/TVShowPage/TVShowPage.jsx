@@ -5,7 +5,7 @@ import FeaturedTVShows from "../../components/FeaturedShow/FeaturedShow"
 import TVShowsCont from "../../components/TVShowsCont/TVShowsCont";
 import TVShowsGenreRows from "../../components/TVShowsGenreRows/TVShowsGenreRows";
 
-export default function TVShowPage(){
+export default function TVShowPage({user}){
     const API_KEY = "d360e29d9c56bc4d6949ac6197400528";
 
     const [tvShows, SetTVShows] = useState([]);

@@ -51,9 +51,8 @@ export default function App() {
 
             <Route path="/home" element={<HomePage currentText={inputHandler}/> } />
             <Route path="/movies" element={<MoviePage currentText={inputHandler}/>} />
-            <Route path="/tvshows" element={<TVShowPage currentText={inputHandler}/>} />
-            <Route path="/watchlist" element={<WatchList currentText={inputHandler}/>} />
-
+            <Route path="/tvshows" element={<TVShowPage currentText={inputHandler} user={user}/>} />
+            <Route path="/watchlist/:id" element={<WatchList currentText={inputHandler} user={user} />} />
           </Routes>
       </>
       :
