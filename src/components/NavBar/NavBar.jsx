@@ -23,7 +23,7 @@ export default function NavBar({ user, setUser, clickedProfile, setClickedProfil
 
     return(
         <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="#">Mernflex</a>
+            <a class="navbar-brand">MERNFLEX</a>
             <button class="navbar-toggler" 
                 type="button" 
                 data-toggle="collapse" 

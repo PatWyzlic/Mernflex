@@ -93,7 +93,7 @@ export default function MyVerticallyCenteredModal(props) {
         <Modal.Body>
           <div className="videoCont">
         <iframe
-                className="video"
+                className="modal-video"
                 src={modalVideoUrl}
                 allow="autoplay"
                 title="YouTube video player"
