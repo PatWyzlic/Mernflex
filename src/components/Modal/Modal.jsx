@@ -15,7 +15,8 @@ export default function MyVerticallyCenteredModal(props) {
       PosterPath: "",
       Genres: "",
       ReleaseDate: "",
-      Popularity: 0
+      Popularity: 0,
+      Current_Profile: ""
     })
     const [error, setError] = useState('');
     const [modalVideoUrl, SetModalVideoUrl] = useState([])
@@ -68,14 +69,12 @@ export default function MyVerticallyCenteredModal(props) {
           evt.preventDefault()
           try{
             const newwatchlistitem = await WatchListAPI.createWatchListItem()
-            console.log('newwatchlistitem', newwatchlistitem)
             setWatchListMovie(newwatchlistitem)
           } catch {
             setError("WATCHLIST ITEM CREATION FAILED")
           }
           
         }
-        console.log(watchListMovie)
         
         // console.log(genreNames)
         return (
@@ -94,7 +93,7 @@ export default function MyVerticallyCenteredModal(props) {
         <Modal.Body>
           <div className="videoCont">
         <iframe
-                className="video"
+                className="modal-video"
                 src={modalVideoUrl}
                 allow="autoplay"
                 title="YouTube video player"
