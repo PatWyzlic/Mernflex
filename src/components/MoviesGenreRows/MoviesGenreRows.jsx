@@ -54,7 +54,7 @@ export default function MoviesGenreRows({ API_KEY, genreId, genreName }){
         </div>
     </>
     )
-  }else{
+    }else{
     return(
       <>
         {movies.map((movie) => {
