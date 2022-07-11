@@ -4,8 +4,9 @@ import Button from 'react-bootstrap/Button'
 import "./Modal.css"
 import genres from "../genres"
 import * as WatchListAPI from "../../utilities/watchList-api"
+import * as ManageProfile from "../../pages/ManageProfile/ManageProfile"
 
-export default function MyVerticallyCenteredModal(props) {
+export default function MyVerticallyCenteredModal(props, {user}) {
   const arr = props.clickedmovie.genre_ids
     let genreNames = []
     const [watchListMovie, setWatchListMovie]= useState({
@@ -15,7 +16,8 @@ export default function MyVerticallyCenteredModal(props) {
       PosterPath: "",
       Genres: "",
       ReleaseDate: "",
-      Popularity: 0
+      Popularity: 0,
+      Current_Profile: ""
     })
     const [error, setError] = useState('');
     const [modalVideoUrl, SetModalVideoUrl] = useState([])
@@ -33,7 +35,6 @@ export default function MyVerticallyCenteredModal(props) {
     
     getgenres()
     const genreNamesList = genreNames.toString()
-    
     useEffect(() => {
       setWatchListMovie(
         {Title: props.clickedmovie.name,
@@ -42,11 +43,11 @@ export default function MyVerticallyCenteredModal(props) {
           PosterPath: props.clickedmovie.poster_path,
           Genres: genreNamesList ,
           ReleaseDate: props.clickedmovie.first_air_date,
-          Popularity: props.clickedmovie.popularity}
+          Popularity: props.clickedmovie.popularity,
+          Current_Profile: ""}
           );
       getFeaturedFilmVideo(URL_Featured_Video)
         },[props.clickedmovie]);
-
         const URL_Featured_Video = `https://api.themoviedb.org/3/tv/${props.clickedmovie.id}/videos?api_key=${props.API_KEY}&language=en-US`
         
         function getFeaturedFilmVideo(url) {
@@ -57,24 +58,18 @@ export default function MyVerticallyCenteredModal(props) {
               SetModalVideoUrl(`https://www.youtube.com/embed/${videokey}?autoplay=1&loop=1&playlist=${videokey}&mute=1&rel=0`)
             });
           }
-        
-
-
 
         async function handleSubmit(evt){
           evt.preventDefault()
           try{
             const newwatchlistitem = await WatchListAPI.createWatchListItem()
-            console.log('newwatchlistitem', newwatchlistitem)
             setWatchListMovie(newwatchlistitem)
           } catch {
             setError("WATCHLIST ITEM CREATION FAILED")
           }
           
         }
-        console.log(watchListMovie)
         
-        // console.log(genreNames)
         return (
           
           <Modal
@@ -113,14 +108,14 @@ export default function MyVerticallyCenteredModal(props) {
           
             <div className="modal-btns">
             <form onSubmit={handleSubmit}> 
-                {/* <input type="hidden" placeholder='Title' value={props.clickedmovie.title} name="Title" />
-                <input type="hidden" placeholder='Description' value={props.clickedmovie.overview} name="Description"/>
-                <input type="hidden" placeholder='MovieId' value={props.clickedmovie.id} name="MovieDbId"/>
-                <input type="hidden" placeholder='Posterpath' value={props.clickedmovie.poster_path} name="PosterPath"/>
-                <input type="hidden" placeholder='Genres' value={genreNamesList} name="Genres"/>
-                <input type="hidden" placeholder='ReleaseDate' value={props.clickedmovie.release_date} name="ReleaseDate"/>
-                <input type="hidden" placeholder='Popularity' value={props.clickedmovie.popularity} name="Popularity"/> */}
-                <button type="submit">Add to Watchlist</button>
+                  <input type="hidden" placeholder='Title' value={props.clickedmovie.name} name="Title" />
+                  <input type="hidden" placeholder='Description' value={props.clickedmovie.overview} name="Description"/>
+                  <input type="hidden" placeholder='MovieId' value={props.clickedmovie.id} name="MovieDbId"/>
+                  <input type="hidden" placeholder='Posterpath' value={props.clickedmovie.poster_path} name="PosterPath"/>
+                  <input type="hidden" placeholder='Genres' value={genreNamesList} name="Genres"/>
+                  <input type="hidden" placeholder='ReleaseDate' value={props.clickedmovie.release_date} name="ReleaseDate"/>
+                  <input type="hidden" placeholder='Popularity' value={props.clickedmovie.popularity} name="Popularity"/>
+                  <button type="submit">Add to Watchlist</button>
             </form>
             <Button onClick={props.onHide}>Close</Button>
             </div>          

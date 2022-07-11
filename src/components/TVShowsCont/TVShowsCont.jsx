@@ -3,7 +3,7 @@ import "./TVShowsCont.css"
 import * as App from "../../pages/App/App"
 import MyVerticallyCenteredModal from "../Modal/Modaltv";
 
-export default function TVShowsCont({API_KEY, SetTVShows, tvShows}){
+export default function TVShowsCont({API_KEY, SetTVShows, tvShows, inputHandler}){
 
   const mainUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=Action&with_watch_monetization_types=flatrate`;
   const [modalShow, setModalShow] = useState(false);
