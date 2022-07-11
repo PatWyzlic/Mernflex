@@ -13,7 +13,6 @@ export default function FeaturedMovie({API_KEY}){
       fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.results[0])
         setFeaturedFilm(data.results[0])
     })
   }

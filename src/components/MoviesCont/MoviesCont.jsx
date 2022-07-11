@@ -16,7 +16,6 @@ export default function MoviesCont({API_KEY, SetMovies, movies}){
       .then((response) => response.json())
       .then((data) => {
         SetMovies(data.results);
-        console.log(data.results);
       });
     }
 
@@ -27,7 +26,6 @@ export default function MoviesCont({API_KEY, SetMovies, movies}){
   function clickedMovies(evt){
     setModalShow(true)
     setClickedMovie(evt)
-    console.log(clickedMovie)
   }
 
   if(App.newestInputFunction() === ""){

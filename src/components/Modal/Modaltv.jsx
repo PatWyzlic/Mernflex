@@ -44,7 +44,7 @@ export default function MyVerticallyCenteredModal(props, {user}) {
           Genres: genreNamesList ,
           ReleaseDate: props.clickedmovie.first_air_date,
           Popularity: props.clickedmovie.popularity,
-          Current_Profile: props.user}
+          Current_Profile: ""}
           );
       getFeaturedFilmVideo(URL_Featured_Video)
         },[props.clickedmovie]);
@@ -60,22 +60,16 @@ export default function MyVerticallyCenteredModal(props, {user}) {
           }
 
         async function handleSubmit(evt){
-          console.log("Usestate", setWatchListMovie)
-          console.log("Handlesubmit title", props.clickedmovie.name)
           evt.preventDefault()
           try{
-            console.log("Adding watch list item")
             const newwatchlistitem = await WatchListAPI.createWatchListItem()
-            console.log('newwatchlistitem', newwatchlistitem)
             setWatchListMovie(newwatchlistitem)
           } catch {
             setError("WATCHLIST ITEM CREATION FAILED")
           }
           
         }
-        console.log(watchListMovie)
         
-        // console.log(genreNames)
         return (
           
           <Modal
