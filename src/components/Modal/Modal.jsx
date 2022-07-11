@@ -26,7 +26,6 @@ export default function MyVerticallyCenteredModal(props) {
     
     async function getgenres(){
       for (let i =0; i < arr.length; i++){
-        // console.log(arr[i])
         for (let j = 0; j < genres.length; j++){
           if(genres[j].id === arr[i]){
             genreNames.push(genres[j].name)
@@ -76,7 +75,6 @@ export default function MyVerticallyCenteredModal(props) {
           
         }
         
-        // console.log(genreNames)
         return (
           
           <Modal
@@ -115,13 +113,13 @@ export default function MyVerticallyCenteredModal(props) {
           
             <div className="modal-btns">
             <form onSubmit={handleSubmit}> 
-                {/* <input type="hidden" placeholder='Title' value={props.clickedmovie.title} name="Title" />
+                <input type="hidden" placeholder='Title' value={props.clickedmovie.title} name="Title" />
                 <input type="hidden" placeholder='Description' value={props.clickedmovie.overview} name="Description"/>
                 <input type="hidden" placeholder='MovieId' value={props.clickedmovie.id} name="MovieDbId"/>
                 <input type="hidden" placeholder='Posterpath' value={props.clickedmovie.poster_path} name="PosterPath"/>
                 <input type="hidden" placeholder='Genres' value={genreNamesList} name="Genres"/>
                 <input type="hidden" placeholder='ReleaseDate' value={props.clickedmovie.release_date} name="ReleaseDate"/>
-                <input type="hidden" placeholder='Popularity' value={props.clickedmovie.popularity} name="Popularity"/> */}
+                <input type="hidden" placeholder='Popularity' value={props.clickedmovie.popularity} name="Popularity"/>
                 <button type="submit">Add to Watchlist</button>
             </form>
             <Button onClick={props.onHide}>Close</Button>

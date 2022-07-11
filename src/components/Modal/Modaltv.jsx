@@ -24,7 +24,6 @@ export default function MyVerticallyCenteredModal(props, {user}) {
 
     async function getgenres(){
       for (let i =0; i < arr.length; i++){
-        // console.log(arr[i])
         for (let j = 0; j < genres.length; j++){
           if(genres[j].id === arr[i]){
             genreNames.push(genres[j].name)
