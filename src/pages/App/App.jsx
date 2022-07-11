@@ -19,7 +19,6 @@ export function newestInputFunction(){
   return theNewInput
 }
 
-
 export default function App() {
   const [user, setUser] = useState(getUser())
   const [profiles, setProfiles] = useState()
@@ -49,11 +48,12 @@ export default function App() {
             <Route path="/profiles/:userid" element={<ProfilePage user={user} profiles={user.user.Profiles} setProfiles={setProfiles} profileList={profileList} setProfileList={setProfileList} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             <Route path="/profiles/manage" element={<ManageProfile user={user} profiles={user.user.Profiles} setProfiles={setProfiles} profileList={profileList} setProfileList={setProfileList} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             <Route path="/profiles/manage/:profileId" element={<EditProfile user={user} profiles={user.user.Profiles} setProfiles={setProfiles} profileList={profileList} setProfileList={setProfileList} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
-            
+
             <Route path="/home" element={<HomePage currentText={inputHandler}/> } />
             <Route path="/movies" element={<MoviePage currentText={inputHandler}/>} />
             <Route path="/tvshows" element={<TVShowPage currentText={inputHandler}/>} />
             <Route path="/watchlist" element={<WatchList currentText={inputHandler}/>} />
+
           </Routes>
       </>
       :
