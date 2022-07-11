@@ -11,8 +11,7 @@ const propic6 = require("../../images/profile-icon6.png")
 
 const images = [propic1,propic2,propic3,propic4,propic5,propic6]
 
-export default function NavBar({ user, setUser, clickedProfile,setClickedProfile, inputHandler}) {
-    
+export default function NavBar({ user, setUser, clickedProfile, setClickedProfile, inputHandler}) {
     // Add the following function
     function handleLogOut() {
         // Delegate to the users-service
@@ -21,6 +20,7 @@ export default function NavBar({ user, setUser, clickedProfile,setClickedProfile
         // Update state will also cause a re-render
         setUser(null)
     }
+
     return(
         <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="#">Mernflex</a>

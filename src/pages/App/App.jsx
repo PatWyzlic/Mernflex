@@ -43,17 +43,17 @@ export default function App() {
     <main className="App">
       {user ?
       <>
-          <NavBar user={user} setUser={setUser} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>
+          <NavBar user={user} setUser={setUser} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile} inputText={inputText} setInputText={setInputText} inputHandler={inputHandler}/>
           <Routes>
             {/* <Route path="/" element={<ProfilePage/>} /> */}
             <Route path="/profiles/:userid" element={<ProfilePage user={user} profiles={user.user.Profiles} setProfiles={setProfiles} profileList={profileList} setProfileList={setProfileList} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             <Route path="/profiles/manage" element={<ManageProfile user={user} profiles={user.user.Profiles} setProfiles={setProfiles} profileList={profileList} setProfileList={setProfileList} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             <Route path="/profiles/manage/:profileId" element={<EditProfile user={user} profiles={user.user.Profiles} setProfiles={setProfiles} profileList={profileList} setProfileList={setProfileList} clickedProfile={clickedProfile} setClickedProfile={setClickedProfile}/>}/>
             
-            <Route path="/home" element={<HomePage/>} />
+            <Route path="/home" element={<HomePage currentText={inputHandler}/> } />
             <Route path="/movies" element={<MoviePage currentText={inputHandler}/>} />
-            <Route path="/tvshows" element={<TVShowPage/>} />
-            <Route path="/watchlist" element={<WatchList listName={setListName}/>} />
+            <Route path="/tvshows" element={<TVShowPage currentText={inputHandler}/>} />
+            <Route path="/watchlist" element={<WatchList currentText={inputHandler}/>} />
           </Routes>
       </>
       :
