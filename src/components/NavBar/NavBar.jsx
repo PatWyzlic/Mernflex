@@ -64,7 +64,7 @@ export default function NavBar({ user, setUser, clickedProfile, setClickedProfil
                         <li 
                             class="nav-item">
                             <Link className="nav-link" 
-                            to="/watchlist">My Watchlist</Link>
+                            to={`/watchlist/${clickedProfile._id}`}>My Watchlist</Link>
                         </li>
                     </ul>
                     <form 

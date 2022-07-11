@@ -9,7 +9,8 @@ h1{
     width: 150px
 }
 
-/* input{
-    width:200px;
+input{
+    width:300px;
+    align-self: center;
     border-radius: 2px;
-} */
+}
