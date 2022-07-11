@@ -3,7 +3,7 @@ import React, { useState } from "react"
 
 export default function WatchList({user, appProfiles, profiles, setProfiles, profileList, setProfileList, clickedProfile, setClickedProfile}) {
     const [visible, setVisible] = useState(false)
-
+    
     return (
         <div>
             <div className="text-standards">
