@@ -1,7 +1,7 @@
 import "./WatchList.css"
 import React, { useState } from "react"
 
-export default function WatchList({user,appProfiles, profiles, setProfiles, profileList, setProfileList, clickedProfile, setClickedProfile}) {
+export default function WatchList({user, appProfiles, profiles, setProfiles, profileList, setProfileList, clickedProfile, setClickedProfile}) {
     const [visible, setVisible] = useState(false)
 
     return (
