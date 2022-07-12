@@ -10,12 +10,15 @@ Deployed App:
 
 •	Sign Up 
 •	Log In
-•	Movie Lists
-•	Genre Selection
+•	Movie List Page With Genres
+•	TV Show List Page With Genres
+•	Home Page Which Lists Movies and TV Shows
+•	Movie / TV Show Modals
+•	Create Profile
 •	Edit profiles
+•	Delete profiles
+•	Search Bar
 •	Video Player
-•	Maturity settings
-•   Autoplay control
 
 # Wireframes 
 Sign Up
@@ -40,7 +43,6 @@ Edit Profile
 
 
 
-
 #  Run Locally
  
 • Clone the project
@@ -53,6 +55,12 @@ Edit Profile
 • Install dependencies
   npm i
 
+• Create Build
+  npm run build
+
+• Start the backend
+  nodemon server.js
+
 • Start the server
   npm run start
 
@@ -60,8 +68,12 @@ Edit Profile
 # Ice Box
 
 • Kids v/s Adults Profile
+• Auto Play settings
 • Last Watched and Continue Watching feature
-• watch later section
+• Watch later section
+• Watchlist
+• Speeding up modal video render times
+• Adding in loading screen
 
 # What we learned as a team
 
